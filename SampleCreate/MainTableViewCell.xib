@@ -27,10 +27,20 @@
                         <rect key="frame" x="312" y="8" width="55" height="29"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ojo-Mz-ZZ2">
+                        <rect key="frame" x="86" y="5" width="218" height="35"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                        <connections>
+                            <action selector="changeColor:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ESN-Tb-iwo"/>
+                        </connections>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="colorCangeButton" destination="ojo-Mz-ZZ2" id="vtX-ha-P7A"/>
                 <outlet property="img" destination="gNm-na-DS3" id="YWZ-mH-17J"/>
                 <outlet property="label" destination="78w-8q-C7f" id="V8H-hm-1RK"/>
             </connections>

@@ -27,6 +27,9 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         textBox.layer.borderWidth = 1.0
         textBox.layer.cornerRadius = 5.0
         
+        // セルの背景を変更する
+        myTableView.tableFooterView = UIView()
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int
@@ -51,16 +54,20 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         cell.indexNum = indexPath.row
         //
         cell.imgDelegate = self
+        // ボタンのタイトル
+        cell.colorCangeButton.setTitle("色を変更", for: .normal)
+        
         return cell
     }
     func removeData(id:Int) {
-        let indexPath = IndexPath(row: id, section: 0)
+//        let indexPath = IndexPath(row: id, section: 0)
         print("testTouch:", id)
         items.remove(at: id)
         print("items:\(items)")
 //        myTableView.deleteRows(at: [indexPath], with: .automatic)
         myTableView.reloadData()
     }
+    
     // テーブルを押下した時の処理
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        items.remove(at: indexPath.row)

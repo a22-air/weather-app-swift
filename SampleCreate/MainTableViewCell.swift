@@ -15,8 +15,9 @@ class MainTableViewCell: UITableViewCell {
 
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var label: UILabel!
-    var indexNum:Int = -1
+    @IBOutlet weak var colorCangeButton: UIButton!
     
+    var indexNum:Int = -1
     var imgDelegate: CatchRemoveButton?
     
     override func awakeFromNib() {
@@ -26,8 +27,15 @@ class MainTableViewCell: UITableViewCell {
         img.isUserInteractionEnabled = true
         img.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(removeText)))
         
+        // ボタンのアクションを設定
+        colorCangeButton.addTarget(self, action: #selector(changeColor), for: .touchUpInside)
     }
 
+    // セルの背景を変更する処理
+    @objc
+    func changeColor(_ sender: Any) {
+        self.contentView.backgroundColor = UIColor.blue
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
