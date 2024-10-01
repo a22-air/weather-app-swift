@@ -34,7 +34,11 @@ class MainTableViewCell: UITableViewCell {
     // セルの背景を変更する処理
     @objc
     func changeColor(_ sender: Any) {
-        self.contentView.backgroundColor = UIColor.blue
+        if self.contentView.backgroundColor == UIColor.blue{
+            self.contentView.backgroundColor = UIColor.clear
+        } else {
+            self.contentView.backgroundColor = UIColor.blue
+        }
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
