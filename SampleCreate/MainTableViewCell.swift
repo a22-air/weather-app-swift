@@ -7,12 +7,17 @@
 
 import UIKit
 
+protocol CatchRemoveButton {
+    func removeData(id:Int)
+}
+
 class MainTableViewCell: UITableViewCell {
 
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var label: UILabel!
+    var indexNum:Int = -1
     
-    var str = ""
+    var imgDelegate: CatchRemoveButton?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,6 +37,8 @@ class MainTableViewCell: UITableViewCell {
     }
     @objc
     func removeText() {
-        print("OK")
+        if self.indexNum >= 0 {
+            imgDelegate?.removeData(id: indexNum)
+        }
     }
 }

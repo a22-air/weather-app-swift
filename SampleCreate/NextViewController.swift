@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,CatchRemoveButton {
     
     var items : [String] = []
     
@@ -42,22 +42,30 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        //1:セルのデザインテンプレートをカスタムセルにする
-        //2:カスタムせるにボタンなどのUIを載せる
-        //3:コード側でUIのイベントを追加する (押下時や入力変更時など)
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! MainTableViewCell
         // ゴミ箱アイコンをセット
         cell.img.image = UIImage(systemName: "trash")
         // テキストフィールドのテキストをテーブルにセット
         cell.label.text = self.items[indexPath.row]
+        // カスタムセルのindex
+        cell.indexNum = indexPath.row
+        //
+        cell.imgDelegate = self
         return cell
     }
-    // テーブルを押下した時の処理
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        items.remove(at: indexPath.row)
-        myTableView.deleteRows(at: [indexPath], with: .automatic)
+    func removeData(id:Int) {
+        let indexPath = IndexPath(row: id, section: 0)
+        print("testTouch:", id)
+        items.remove(at: id)
+        print("items:\(items)")
+//        myTableView.deleteRows(at: [indexPath], with: .automatic)
+        myTableView.reloadData()
     }
+    // テーブルを押下した時の処理
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        items.remove(at: indexPath.row)
+//        myTableView.deleteRows(at: [indexPath], with: .automatic)
+//    }
     
     // 追加ボタンを押下した時のハンドラ
     @IBAction func addText(_ sender: Any) {
@@ -75,6 +83,6 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         textBox.text = ""
     }
-    
+   
 }
 
