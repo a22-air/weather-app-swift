@@ -66,12 +66,6 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         items.remove(at: indexPath.row)
         myTableView.deleteRows(at: [indexPath], with: .automatic)
     }
-    // テーブルを押下した時の処理
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        items.remove(at: indexPath.row)
-//        myTableView.deleteRows(at: [indexPath], with: .automatic)
-//    }
-    
     // 追加ボタンを押下した時のハンドラ
     @IBAction func addText(_ sender: Any) {
         // テキストフィールドが空文字の場合は何もしない
