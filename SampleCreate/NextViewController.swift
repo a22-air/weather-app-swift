@@ -8,7 +8,6 @@
 import UIKit
 
 class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,CatchRemoveButton {
-    
     var items : [String] = []
     
     @IBOutlet weak var myTableView: UITableView!
@@ -68,6 +67,14 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         myTableView.reloadData()
     }
     
+    // セルを削除する関数
+    func removeCell(myCell: UITableViewCell){
+        guard let indexPath = myTableView.indexPath(for: myCell) else {
+               return
+           }
+        items.remove(at: indexPath.row)
+        myTableView.deleteRows(at: [indexPath], with: .automatic)
+    }
     // テーブルを押下した時の処理
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        items.remove(at: indexPath.row)
