@@ -58,15 +58,6 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         return cell
     }
-    func removeData(id:Int) {
-//        let indexPath = IndexPath(row: id, section: 0)
-        print("testTouch:", id)
-        items.remove(at: id)
-        print("items:\(items)")
-//        myTableView.deleteRows(at: [indexPath], with: .automatic)
-        myTableView.reloadData()
-    }
-    
     // セルを削除する関数
     func removeCell(myCell: UITableViewCell){
         guard let indexPath = myTableView.indexPath(for: myCell) else {

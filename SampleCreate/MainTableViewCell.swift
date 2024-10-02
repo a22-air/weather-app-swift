@@ -8,7 +8,6 @@
 import UIKit
 
 protocol CatchRemoveButton {
-    func removeData(id:Int)
     func removeCell(myCell:UITableViewCell)
 }
 
@@ -54,10 +53,8 @@ class MainTableViewCell: UITableViewCell {
     @objc
     func removeText() {
         if self.indexNum >= 0 {
-            //imgDelegate?.removeData(id: indexNum)
             imgDelegate?.removeCell(myCell: self)
         }
     }
-    
  
 }
