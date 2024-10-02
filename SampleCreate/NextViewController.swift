@@ -9,6 +9,7 @@ import UIKit
 
 class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,CatchRemoveButton {
     var items : [String] = ["りんご","バナナ","みかん"]
+    var deletetAllItems:[Int] = []
     
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var textBox: UITextField!
@@ -59,6 +60,16 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         return cell
     }
+    
+    // テーブルの選択ボタンを押下した時の処理
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // 編集モードだった場合の処理
+        if myTableView.isEditing{
+            deletetAllItems.append(indexPath.row)
+        } else {
+            // 通常時は何もしない
+        }
+    }
     // セルを削除する関数
     func removeCell(myCell: UITableViewCell){
         guard let indexPath = myTableView.indexPath(for: myCell) else {
@@ -86,14 +97,26 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     // 編集ボタンを押下時のハンドラ
     @IBAction func changeMode(_ sender: Any) {
         if(myTableView.isEditing == true){
+            // 削除ボタンの時の処理
             editButton.setTitle("編集", for: .normal)
             myTableView.isEditing = false
-        }else{
-            editButton.setTitle("戻る", for: .normal)
+            // 削除するアイテムのインデックスを降順にソートしてから削除
+            let sortedIndices = deletetAllItems.sorted(by: >)
+            for index in sortedIndices {
+                items.remove(at: index)
+            }
+            // テーブルビューから削除
+            myTableView.deleteRows(at: sortedIndices.map { IndexPath(row: $0, section: 0) }, with: .automatic)
+            deletetAllItems.removeAll()
+        } else {
+            // 編集ボタンの時の処理
+            editButton.setTitle("削除", for: .normal)
             myTableView.allowsMultipleSelectionDuringEditing = true// 複数選択モードにする処理
             myTableView.isEditing = true
         }
     }
+
+
     
 }
 
