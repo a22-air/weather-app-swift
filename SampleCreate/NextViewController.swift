@@ -8,10 +8,11 @@
 import UIKit
 
 class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,CatchRemoveButton {
-    var items : [String] = []
+    var items : [String] = ["りんご","バナナ","みかん"]
     
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var textBox: UITextField!
+    @IBOutlet weak var editButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,6 +83,17 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         textBox.text = ""
     }
-   
+    // 編集ボタンを押下時のハンドラ
+    @IBAction func changeMode(_ sender: Any) {
+        if(myTableView.isEditing == true){
+            editButton.setTitle("編集", for: .normal)
+            myTableView.isEditing = false
+        }else{
+            editButton.setTitle("戻る", for: .normal)
+            myTableView.allowsMultipleSelectionDuringEditing = true// 複数選択モードにする処理
+            myTableView.isEditing = true
+        }
+    }
+    
 }
 
