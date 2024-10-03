@@ -70,6 +70,7 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     // テーブルの選択ボタンを押下した時の処理
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "WeatherViewController", sender: nil)
         // 編集モードだった場合の処理
         if myTableView.isEditing{
             deletetAllItems.append(indexPath.row)

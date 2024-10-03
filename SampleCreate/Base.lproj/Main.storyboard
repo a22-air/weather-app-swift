@@ -132,11 +132,28 @@
                         <outlet property="editButton" destination="ye6-Kj-pfB" id="rrp-l7-YtH"/>
                         <outlet property="myTableView" destination="YXU-NB-biE" id="IDQ-mH-1u5"/>
                         <outlet property="textBox" destination="Wtm-gg-02s" id="MEC-1D-1aA"/>
+                        <segue destination="62O-LX-4SG" kind="show" identifier="WeatherViewController" animates="NO" id="hrC-Eo-PK9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pxv-z8-PMc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1257.2519083969464" y="693.66197183098598"/>
+        </scene>
+        <!--Weather Details View Controller-->
+        <scene sceneID="6mK-gx-E0V">
+            <objects>
+                <viewController storyboardIdentifier="WeatherViewController" id="62O-LX-4SG" customClass="WeatherDetailsViewController" customModule="SampleCreate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="A1V-M1-TMS">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="65l-bk-MTj"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7ef-g3-0m2"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hty-fa-m7k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-366" y="694"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
