@@ -73,8 +73,6 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         // 編集モードだった場合の処理
         if myTableView.isEditing{
             deletetAllItems.append(indexPath.row)
-        } else {
-            // 通常時は何もしない
         }
     }
     
