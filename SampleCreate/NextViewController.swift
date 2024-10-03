@@ -13,6 +13,7 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     var items : [String] = ["りんご","バナナ","みかん"]
     var deletetAllItems:[Int] = []
     let addresList: [String] = ["兵庫","大阪","京都","奈良"]
+    let items2: [String] = ["東京","埼玉","千葉","神奈川","栃木","茨城"]
     
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var textBox: UITextField!
@@ -48,7 +49,12 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return self.items.count
+        if section == 0 {
+            return self.items.count
+        } else if section == 1{
+            return self.items2.count
+        }
+        return 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
@@ -57,7 +63,11 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         // ゴミ箱アイコンをセット
         cell.img.image = UIImage(systemName: "trash")
         // テキストフィールドのテキストをテーブルにセット
-        cell.label.text = self.items[indexPath.row]
+        if indexPath.section == 0 {
+            cell.label.text = items[indexPath.row]  // セクション1のデータを設定
+        } else if indexPath.section == 1 {
+            cell.label.text = items2[indexPath.row]  // セクション2のデータを設定
+        }
         // カスタムセルのindex
         cell.indexNum = indexPath.row
         //
