@@ -61,22 +61,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ahv-Qe-D49">
-                                <rect key="frame" x="333" y="92" width="56" height="34.333333333333329"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                <color key="tintColor" systemColor="secondarySystemGroupedBackgroundColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="追加">
-                                    <backgroundConfiguration key="background">
-                                        <color key="backgroundColor" systemColor="systemMintColor"/>
-                                    </backgroundConfiguration>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="addText:" destination="bXO-P3-VDY" eventType="touchUpInside" id="oxv-ww-Cln"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wtm-gg-02s">
-                                <rect key="frame" x="12" y="93" width="313" height="34.000000000000007"/>
+                                <rect key="frame" x="12" y="93" width="212" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" name="AccentColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -121,6 +107,29 @@
                                 <buttonConfiguration key="configuration" style="plain" title="編集"/>
                                 <connections>
                                     <action selector="changeMode:" destination="bXO-P3-VDY" eventType="touchUpInside" id="Zoj-gl-Dg5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8K3-j9-P33">
+                                <rect key="frame" x="306" y="93" width="68" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="追加2"/>
+                                <connections>
+                                    <action selector="addTextSection2:" destination="bXO-P3-VDY" eventType="touchUpInside" id="Bvr-rX-1ZT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ahv-Qe-D49">
+                                <rect key="frame" x="233" y="93" width="66" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <color key="tintColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="追加1">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" systemColor="systemMintColor"/>
+                                    </backgroundConfiguration>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="addText:" destination="bXO-P3-VDY" eventType="touchUpInside" id="oxv-ww-Cln"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -13,7 +13,7 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     var items : [String] = ["りんご","バナナ","みかん"]
     var deletetAllItems:[Int] = []
     let addresList: [String] = ["兵庫","大阪","京都","奈良"]
-    let items2: [String] = ["東京","埼玉","千葉","神奈川","栃木","茨城"]
+    var items2: [String] = ["東京","埼玉","千葉","神奈川","栃木","茨城"]
     
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var textBox: UITextField!
@@ -133,6 +133,22 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         myTableView.insertRows(at: [indexPath], with: .automatic)
         
         textBox.text = ""
+    }
+    // セクション2に追加するボタンを押下した時のハンドラ
+    
+    @IBAction func addTextSection2(_ sender: Any) {
+        print("OK")
+        // テキストファイールドが空文字の場合は何もしない
+        if textBox.text?.count ?? 0 <= 0 {
+            return
+        }
+        // テキストフィールドの値をitems2に追加
+        let item = textBox.text!
+        items2.append("\(String(describing: item))")
+         
+        // テーブルに列を挿入
+        let indexPath = IndexPath(row: items2.count - 1, section: 1)
+        myTableView.insertRows(at: [indexPath], with: .automatic)
     }
     // 編集ボタンを押下時のハンドラ
     @IBAction func changeMode(_ sender: Any) {
