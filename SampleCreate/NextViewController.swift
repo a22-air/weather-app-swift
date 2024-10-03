@@ -43,7 +43,7 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     func numberOfSections(in tableView: UITableView) -> Int
 
     {
-        return 1
+        return 2
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -76,7 +76,30 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             deletetAllItems.append(indexPath.row)
         }
     }
-    
+    // セクション間のヘッダー設定
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
+    {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor(red: 1.0, green: 0.75, blue: 0.8, alpha: 1.0)
+        headerView.frame = CGRect(x: 0, y: 0, width: tableView.frame.width, height: 34)
+
+        let title = UILabel()
+        title.text = "Section \(section + 1)"
+        title.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        title.textColor = .white
+        title.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+        title.sizeToFit()
+        headerView.addSubview(title)
+
+        // 自動的なフレーム設定を無効化
+        title.translatesAutoresizingMaskIntoConstraints = false
+        // ラベルの位置をセンター寄せにする
+        title.centerYAnchor.constraint(equalTo: headerView.centerYAnchor).isActive = true
+        // ラベルの左側に余白を指定
+        title.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 20).isActive = true
+
+        return headerView
+    }
     // セルを削除する関数
     func removeCell(myCell: UITableViewCell){
         guard let indexPath = myTableView.indexPath(for: myCell) else {
