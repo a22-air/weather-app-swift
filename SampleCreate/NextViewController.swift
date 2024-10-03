@@ -7,13 +7,18 @@
 
 import UIKit
 
-class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,CatchRemoveButton {
+class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,CatchRemoveButton,UIPickerViewDelegate,UIPickerViewDataSource {
+   
+    
     var items : [String] = ["りんご","バナナ","みかん"]
     var deletetAllItems:[Int] = []
+    let addresList: [String] = ["兵庫","大阪","京都","奈良"]
     
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var textBox: UITextField!
     @IBOutlet weak var editButton: UIButton!
+    
+    var pickerView: UIPickerView = UIPickerView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +36,8 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         // セルの背景を変更する
         myTableView.tableFooterView = UIView()
         
+        // ピッカー呼び出し
+        picker()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int
@@ -70,6 +77,7 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             // 通常時は何もしない
         }
     }
+    
     // セルを削除する関数
     func removeCell(myCell: UITableViewCell){
         guard let indexPath = myTableView.indexPath(for: myCell) else {
@@ -115,7 +123,50 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             myTableView.isEditing = true
         }
     }
-
+    
+    //　MARK: - ここからピッカーの記述
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return addresList.count
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return addresList[row]
+    }
+    
+    // キーボード内に表示するピッカーの設定
+    func picker(){
+        // ピッカー設定
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        // 決定・キャンセル用のツールバーの生成
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
+        let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+        let cancelItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
+        toolbar.setItems([cancelItem, spaceItem, doneItem], animated: true)
+                
+        // インプットビュー設定
+        textBox.inputView = pickerView
+        textBox.inputAccessoryView = toolbar
+    }
+        // 決定ボタンのアクション指定
+        @objc func done() {
+            textBox.endEditing(true)
+            textBox.text = "\(addresList[pickerView.selectedRow(inComponent: 0)])"
+        }
+        // キャンセルボタンのアクション指定
+        @objc func cancel(){
+            textBox.endEditing(true)
+        }
+        // 画面タップでテキストフィールドを閉じる
+        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            textBox.endEditing(true)
+        }
 
     
 }
