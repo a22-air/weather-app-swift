@@ -15,7 +15,10 @@ class WeatherDetailsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func backButton(_ sender: Any) {
+        // 前の画面に戻る
+    }
+    
     /*
     // MARK: - Navigation
 
