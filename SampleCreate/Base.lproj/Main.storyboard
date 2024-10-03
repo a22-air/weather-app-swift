@@ -56,39 +56,35 @@
         <!--Next View Controller-->
         <scene sceneID="Nug-FG-rJM">
             <objects>
-                <viewController id="bXO-P3-VDY" customClass="NextViewController" customModule="SampleCreate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="bXO-P3-VDY" customClass="NextViewController" customModule="SampleCreate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dRY-C6-3WT">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ahv-Qe-D49">
-                                <rect key="frame" x="329" y="0.0" width="56" height="34.333333333333336"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ahv-Qe-D49">
+                                <rect key="frame" x="333" y="72" width="56" height="34.333333333333329"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <color key="tintColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="追加">
                                     <backgroundConfiguration key="background">
-                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                        <color key="backgroundColor" systemColor="systemMintColor"/>
                                     </backgroundConfiguration>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="addText:" destination="bXO-P3-VDY" eventType="touchUpInside" id="oxv-ww-Cln"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wtm-gg-02s">
-                                <rect key="frame" x="4" y="0.0" width="321" height="38.333333333333336"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wtm-gg-02s">
+                                <rect key="frame" x="12" y="73" width="313" height="34.000000000000007"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" name="AccentColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ye6-Kj-pfB">
-                                <rect key="frame" x="314" y="38.333333333333336" width="75" height="35.000000000000007"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="編集"/>
-                                <connections>
-                                    <action selector="changeMode:" destination="bXO-P3-VDY" eventType="touchUpInside" id="Zoj-gl-Dg5"/>
-                                </connections>
-                            </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="YXU-NB-biE">
-                                <rect key="frame" x="0.0" y="73" width="393" height="769"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="YXU-NB-biE">
+                                <rect key="frame" x="0.0" y="135" width="393" height="697"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyTableViewCell" textLabel="Bnd-F6-OHG" style="IBUITableViewCellStyleDefault" id="gYe-h1-15I">
@@ -114,26 +110,18 @@
                                     <outlet property="delegate" destination="bXO-P3-VDY" id="j0r-qf-7g6"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ye6-Kj-pfB">
+                                <rect key="frame" x="333" y="29" width="56" height="34.333333333333336"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="編集"/>
+                                <connections>
+                                    <action selector="changeMode:" destination="bXO-P3-VDY" eventType="touchUpInside" id="Zoj-gl-Dg5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KBs-Tk-aMw"/>
-                        <constraints>
-                            <constraint firstItem="ye6-Kj-pfB" firstAttribute="top" secondItem="Wtm-gg-02s" secondAttribute="bottom" id="2Eo-PG-ZgJ"/>
-                            <constraint firstItem="Ahv-Qe-D49" firstAttribute="top" secondItem="KBs-Tk-aMw" secondAttribute="top" id="2fW-DB-KZw"/>
-                            <constraint firstItem="ye6-Kj-pfB" firstAttribute="top" secondItem="Ahv-Qe-D49" secondAttribute="bottom" constant="4" id="4xn-iA-zKX"/>
-                            <constraint firstItem="Ahv-Qe-D49" firstAttribute="leading" secondItem="Wtm-gg-02s" secondAttribute="trailing" constant="4" id="HcX-Dg-jfA"/>
-                            <constraint firstItem="Wtm-gg-02s" firstAttribute="leading" secondItem="KBs-Tk-aMw" secondAttribute="leading" constant="4" id="J9U-hY-zlY"/>
-                            <constraint firstItem="KBs-Tk-aMw" firstAttribute="bottom" secondItem="YXU-NB-biE" secondAttribute="bottom" id="Orz-Aa-skN"/>
-                            <constraint firstItem="YXU-NB-biE" firstAttribute="trailing" secondItem="KBs-Tk-aMw" secondAttribute="trailing" id="Pfp-QI-aEf"/>
-                            <constraint firstItem="YXU-NB-biE" firstAttribute="top" secondItem="ye6-Kj-pfB" secondAttribute="bottom" id="Tel-n7-Vw1"/>
-                            <constraint firstItem="ye6-Kj-pfB" firstAttribute="leading" secondItem="KBs-Tk-aMw" secondAttribute="leading" constant="314" id="WjG-Sc-CTP"/>
-                            <constraint firstItem="YXU-NB-biE" firstAttribute="top" secondItem="ye6-Kj-pfB" secondAttribute="bottom" id="dVY-xx-JvA"/>
-                            <constraint firstItem="Wtm-gg-02s" firstAttribute="top" secondItem="KBs-Tk-aMw" secondAttribute="top" id="eba-X6-n91"/>
-                            <constraint firstItem="KBs-Tk-aMw" firstAttribute="trailing" secondItem="ye6-Kj-pfB" secondAttribute="trailing" constant="4" id="fa7-me-gdP"/>
-                            <constraint firstItem="ye6-Kj-pfB" firstAttribute="top" secondItem="Wtm-gg-02s" secondAttribute="bottom" id="p4f-vY-e5v"/>
-                            <constraint firstItem="Ahv-Qe-D49" firstAttribute="leading" secondItem="Wtm-gg-02s" secondAttribute="trailing" constant="4" id="qaA-R3-h66"/>
-                            <constraint firstItem="KBs-Tk-aMw" firstAttribute="trailing" secondItem="Ahv-Qe-D49" secondAttribute="trailing" constant="8" id="qbE-4A-Run"/>
-                            <constraint firstItem="YXU-NB-biE" firstAttribute="leading" secondItem="KBs-Tk-aMw" secondAttribute="leading" id="tEY-3c-Kca"/>
-                        </constraints>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <navigationItem key="navigationItem" id="kX0-vv-t0y"/>
                     <connections>
@@ -229,17 +217,20 @@
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
+        <systemColor name="secondarySystemGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
+        <systemColor name="systemMintColor">
+            <color red="0.0" green="0.78039215689999997" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
