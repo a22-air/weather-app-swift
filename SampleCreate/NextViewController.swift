@@ -118,46 +118,17 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         items.remove(at: indexPath.row)
         myTableView.deleteRows(at: [indexPath], with: .automatic)
     }
-    // 追加ボタンを押下した時のハンドラ
-//    @IBAction func addText(_ sender: Any) {
-//        // テキストフィールドが空文字の場合は何もしない
-//        if (textBox.text?.count ?? 0 <= 0) {
-//            print("TEXT")
-//            return
-//        }
-//        // テキストフィールドの値をitemsに追加
-//        let item = textBox.text!
-//        items.append("\(String(describing: item))")
-//        // テーブルに列を挿入
-//        let indexPath = IndexPath(row: items.count - 1, section: 0)
-//        myTableView.insertRows(at: [indexPath], with: .automatic)
-//        
-//        textBox.text = ""
-//    }
-//    // セクション2に追加するボタンを押下した時のハンドラ
-//    @IBAction func addTextSection2(_ sender: Any) {
-//        // テキストファイールドが空文字の場合は何もしない
-//        if textBox.text?.count ?? 0 <= 0 {
-//            return
-//        }
-//        // テキストフィールドの値をitems2に追加
-//        let item = textBox.text!
-//        items2.append("\(String(describing: item))")
-//        // テーブルに列を挿入
-//        let indexPath = IndexPath(row: items2.count - 1, section: 1)
-//        myTableView.insertRows(at: [indexPath], with: .automatic)
-//    }
+    // 追加ボタン1のハンドラ
     @IBAction func addText(_ sender: Any) {
         // セクション1にテキストを追加
         addTextToSection(itemArray: &items, section: 0)
     }
-
+    // 追加ボタン2のハンドラ
     @IBAction func addTextSection2(_ sender: Any) {
         // セクション2にテキストを追加
         addTextToSection(itemArray: &items2, section: 1)
     }
-
-    // 共通の処理を行うメソッド
+    // 追加ボタンの共通の処理を行うメソッド
     func addTextToSection(itemArray: inout [String], section: Int) {
         // テキストフィールドが空文字の場合は何もしない
         guard let text = textBox.text, !text.isEmpty else {
