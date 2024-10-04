@@ -12,6 +12,7 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     var items : [String] = ["りんご","バナナ","みかん"]
     var items2: [String] = ["東京","埼玉","千葉","神奈川","栃木","茨城"]
+    var itemsList: [[String]] = [["いちご","オレンジ","もも"],["福岡","宮崎","長崎","沖縄","宮古島","石垣島"]]
     var deletetAllItems:[Int] = []
     let addresList: [String] = ["兵庫","大阪","京都","奈良"]
     
@@ -44,15 +45,15 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     func numberOfSections(in tableView: UITableView) -> Int
 
     {
-        return 2
+        return itemsList.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         if section == 0 {
-            return self.items.count
+            return self.itemsList[0].count
         } else if section == 1{
-            return self.items2.count
+            return self.itemsList[1].count
         }
         return 0
     }
@@ -64,9 +65,9 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         cell.img.image = UIImage(systemName: "trash")
         // テキストフィールドのテキストをテーブルにセット
         if indexPath.section == 0 {
-            cell.label.text = items[indexPath.row]  // セクション1のデータを設定
+            cell.label.text = itemsList[0][indexPath.row]  // セクション1のデータを設定
         } else if indexPath.section == 1 {
-            cell.label.text = items2[indexPath.row]  // セクション2のデータを設定
+            cell.label.text = itemsList[1][indexPath.row]  // セクション2のデータを設定
         }
         // カスタムセルのindex
         cell.indexNum = indexPath.row
@@ -121,12 +122,12 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     // 追加ボタン1のハンドラ
     @IBAction func addText(_ sender: Any) {
         // セクション1にテキストを追加
-        addTextToSection(itemArray: &items, section: 0)
+        addTextToSection(itemArray: &itemsList[0], section: 0)
     }
     // 追加ボタン2のハンドラ
     @IBAction func addTextSection2(_ sender: Any) {
         // セクション2にテキストを追加
-        addTextToSection(itemArray: &items2, section: 1)
+        addTextToSection(itemArray: &itemsList[1], section: 1)
     }
     // 追加ボタンの共通の処理を行うメソッド
     func addTextToSection(itemArray: inout [String], section: Int) {
