@@ -9,9 +9,6 @@ import UIKit
 
 class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,CatchRemoveButton,UIPickerViewDelegate,UIPickerViewDataSource {
    
-    
-//    var items : [String] = ["りんご","バナナ","みかん"]
-//    var items2: [String] = ["東京","埼玉","千葉","神奈川","栃木","茨城"]
     var itemsList: [[String]] = [["いちご","オレンジ","もも"],["福岡","宮崎","長崎","沖縄","宮古島","石垣島"]]
     var deletetAllItems:[[Int]] = [[],[]]
     let addresList: [String] = ["兵庫","大阪","京都","奈良"]
