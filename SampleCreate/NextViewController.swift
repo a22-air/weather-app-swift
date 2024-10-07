@@ -116,15 +116,10 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         guard let indexPath = myTableView.indexPath(for: myCell) else {
             return
         }
-        if indexPath.first == 0 {
-            itemsList[0].remove(at: indexPath.row)
-            myTableView.deleteRows(at: [indexPath], with: .automatic)
-        } else {
-            itemsList[1].remove(at: indexPath.row)
-            myTableView.deleteRows(at: [indexPath], with: .automatic)
-            }
-        }
-    
+        let section =  indexPath.first ?? 0
+        itemsList[section].remove(at: indexPath.row)
+        myTableView.deleteRows(at: [indexPath], with: .automatic)
+    }
     // 追加ボタン1のハンドラ
     @IBAction func addText(_ sender: Any) {
         // セクション1にテキストを追加
