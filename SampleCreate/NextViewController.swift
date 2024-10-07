@@ -13,7 +13,7 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     var items : [String] = ["りんご","バナナ","みかん"]
     var items2: [String] = ["東京","埼玉","千葉","神奈川","栃木","茨城"]
     var itemsList: [[String]] = [["いちご","オレンジ","もも"],["福岡","宮崎","長崎","沖縄","宮古島","石垣島"]]
-    var deletetAllItems:[Int] = []
+    var deletetAllItems:[[Int]] = [[],[]]
     let addresList: [String] = ["兵庫","大阪","京都","奈良"]
     
     @IBOutlet weak var myTableView: UITableView!
@@ -83,7 +83,10 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 編集モードだった場合の処理
         if myTableView.isEditing{
-            deletetAllItems.append(indexPath.row)
+//            print("indexPath.row:",indexPath)
+            var section: Int = indexPath.first ?? 0
+            deletetAllItems[section].append(indexPath.row)
+            print("deletetAllItems:",deletetAllItems)
         } else {
             // 編集モードではない時にWeatherViewControllerに画面遷移する
             performSegue(withIdentifier: "WeatherViewController", sender: nil)
@@ -159,14 +162,21 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             // 削除ボタンの時の処理
             editButton.setTitle("編集", for: .normal)
             myTableView.isEditing = false
-            // 削除するアイテムのインデックスを降順にソートしてから削除
-            let sortedIndices = deletetAllItems.sorted(by: >)
-            for index in sortedIndices {
-                items.remove(at: index)
-            }
             // テーブルビューから削除
-            myTableView.deleteRows(at: sortedIndices.map { IndexPath(row: $0, section: 0) }, with: .automatic)
-            deletetAllItems.removeAll()
+            for (section, indices) in deletetAllItems.enumerated() {
+                // 削除するアイテムのインデックスを降順にソートしてから削除
+                let sortedIndices = indices.sorted(by: >)
+                
+                var indexPathsToDelete: [IndexPath] = []
+                
+                for index in sortedIndices {
+                    itemsList[section].remove(at: index)
+                    indexPathsToDelete.append(IndexPath(row: index, section: section))
+                }
+                // テーブルビューセルから削除
+                myTableView.deleteRows(at: indexPathsToDelete, with: .automatic)
+                deletetAllItems = [[],[]]
+            }
         } else {
             // 編集ボタンの時の処理
             editButton.setTitle("削除", for: .normal)
