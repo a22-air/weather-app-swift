@@ -114,11 +114,17 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     // セルを削除する関数
     func removeCell(myCell: UITableViewCell){
         guard let indexPath = myTableView.indexPath(for: myCell) else {
-               return
-           }
-        items.remove(at: indexPath.row)
-        myTableView.deleteRows(at: [indexPath], with: .automatic)
-    }
+            return
+        }
+        if indexPath.first == 0 {
+            itemsList[0].remove(at: indexPath.row)
+            myTableView.deleteRows(at: [indexPath], with: .automatic)
+        } else {
+            itemsList[1].remove(at: indexPath.row)
+            myTableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+        }
+    
     // 追加ボタン1のハンドラ
     @IBAction func addText(_ sender: Any) {
         // セクション1にテキストを追加
