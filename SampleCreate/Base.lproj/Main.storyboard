@@ -73,7 +73,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <pickerView key="tableFooterView" contentMode="scaleToFill" id="3cf-Lq-Lud">
-                                    <rect key="frame" x="0.0" y="121.66666793823242" width="393" height="178"/>
+                                    <rect key="frame" x="0.0" y="122" width="393" height="178"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 </pickerView>
                                 <prototypes>
@@ -253,7 +253,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hrC-Eo-PK9"/>
         <segue reference="Hbm-EY-fj2"/>
     </inferredMetricsTieBreakers>
     <resources>
