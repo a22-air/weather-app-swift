@@ -38,7 +38,6 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         // ピッカー呼び出し
         picker()
         
-        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int
@@ -77,7 +76,13 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         return cell
     }
-    
+    // WeatherDetailsViewControllerの画面にitemsListを渡す処理
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // 次の画面を変数化する
+        let WeatherDetailsViewControllerPage = segue.destination as! WeatherDetailsViewController
+        // itemsListを渡す
+        WeatherDetailsViewControllerPage.receveItemsList = itemsList
+    }
     // テーブルの選択ボタンを押下した時の処理
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 編集モードだった場合の処理

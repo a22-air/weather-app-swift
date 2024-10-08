@@ -8,7 +8,7 @@
 import UIKit
 
 class WeatherDetailsViewController: UIViewController {
-
+    var receveItemsList:[[String]] = [[],[]]
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,7 +18,11 @@ class WeatherDetailsViewController: UIViewController {
     @IBAction func backButton(_ sender: Any) {
         // 前の画面に戻る
     }
-    
+    // NextViewControllerにreceveItemsListの値を渡す処理
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let nextViewControllerPage = segue.destination as! NextViewController
+        nextViewControllerPage.itemsList = receveItemsList
+    }
     /*
     // MARK: - Navigation
 
