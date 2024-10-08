@@ -16,7 +16,7 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var textBox: UITextField!
     @IBOutlet weak var editButton: UIButton!
-    
+    @IBOutlet weak var datePicker: UIDatePicker!
     var pickerView: UIPickerView = UIPickerView()
     
     override func viewDidLoad() {
@@ -248,7 +248,13 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             textBox.endEditing(true)
         }
-
+    // デートピッカーの値をテキストフィールドにセット
+    @IBAction func getDateButton(_ sender: Any) {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .short
+            formatter.timeStyle = .none
+            textBox.text = formatter.string(from: datePicker.date)
+        }
     
 }
 
