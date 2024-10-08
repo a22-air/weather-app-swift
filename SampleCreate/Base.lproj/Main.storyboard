@@ -146,6 +146,29 @@
                                     <action selector="getDateButton:" destination="bXO-P3-VDY" eventType="touchUpInside" id="4ub-dD-WEZ"/>
                                 </connections>
                             </button>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="SUg-zT-8mK">
+                                <rect key="frame" x="16" y="53" width="118" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="changeValue:" destination="bXO-P3-VDY" eventType="valueChanged" id="sTW-gN-tvz"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9M4-vV-ah9">
+                                <rect key="frame" x="151" y="53" width="77" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vzd-nQ-yOj">
+                                <rect key="frame" x="236" y="55" width="66" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="OK"/>
+                                <connections>
+                                    <action selector="settingSliderValue:" destination="bXO-P3-VDY" eventType="touchUpInside" id="akY-O4-0gR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KBs-Tk-aMw"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -155,7 +178,9 @@
                         <outlet property="datePicker" destination="Kau-jY-i3u" id="bpA-re-J1i"/>
                         <outlet property="editButton" destination="ye6-Kj-pfB" id="rrp-l7-YtH"/>
                         <outlet property="myTableView" destination="YXU-NB-biE" id="IDQ-mH-1u5"/>
+                        <outlet property="sliderValue" destination="9M4-vV-ah9" id="gAF-yj-JNV"/>
                         <outlet property="textBox" destination="Wtm-gg-02s" id="MEC-1D-1aA"/>
+                        <outlet property="valueVar" destination="SUg-zT-8mK" id="3dv-Dd-Efw"/>
                         <segue destination="62O-LX-4SG" kind="show" identifier="WeatherViewController" animates="NO" id="hrC-Eo-PK9"/>
                     </connections>
                 </viewController>

@@ -17,6 +17,8 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     @IBOutlet weak var textBox: UITextField!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var sliderValue: UILabel!
+    @IBOutlet weak var valueVar: UISlider!
     var pickerView: UIPickerView = UIPickerView()
     
     override func viewDidLoad() {
@@ -38,6 +40,9 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         // ピッカー呼び出し
         picker()
         
+        // スライダー横のラベル
+        sliderValue.text = "1"
+
     }
     
     func numberOfSections(in tableView: UITableView) -> Int
@@ -255,6 +260,20 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             formatter.timeStyle = .none
             textBox.text = formatter.string(from: datePicker.date)
         }
+    
+    // MARK: - スライダーの設定
+    // スライダーの設定
+    @IBAction func changeValue(_ sender: UISlider) {
+        let intSliderValue:Int = Int(sender.value)
+        // スライダー横のラベルにスライダーの文字をセット
+        sliderValue.text = String(intSliderValue)
+    }
+    // スライダー横のボタンの設定
+    @IBAction func settingSliderValue(_ sender: Any) {
+        let intSliderValue:Int = Int(valueVar.value)
+        // テキストフィールドにスライダーのvalueをセット
+        textBox.text = String(intSliderValue)
+    }
     
 }
 
