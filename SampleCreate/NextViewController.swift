@@ -37,6 +37,8 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         // ピッカー呼び出し
         picker()
+        
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int
@@ -111,6 +113,25 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
         return headerView
     }
+    // セクション間のフッター設定
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView()
+        footerView.backgroundColor = UIColor.lightGray // 背景色を設定
+        footerView.frame = CGRect(x: 0, y: 0, width: tableView.frame.width, height: 34) // フッターの高さを設定
+
+        let title = UILabel()
+        title.text = "フッター"
+        title.textAlignment = .center
+        title.frame = footerView.frame
+
+        footerView.addSubview(title)
+        return footerView
+    }
+
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 34 // フッターの高さを指定
+    }
+
     // セルを削除する関数
     func removeCell(myCell: UITableViewCell){
         guard let indexPath = myTableView.indexPath(for: myCell) else {
