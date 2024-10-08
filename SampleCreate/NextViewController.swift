@@ -13,12 +13,12 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     var deletetAllItems:[[Int]] = [[],[]]
     let addresList: [String] = ["兵庫","大阪","京都","奈良"]
     
-    @IBOutlet weak var myTableView: UITableView!
-    @IBOutlet weak var textBox: UITextField!
-    @IBOutlet weak var editButton: UIButton!
-    @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var sliderValue: UILabel!
-    @IBOutlet weak var valueVar: UISlider!
+    @IBOutlet weak var myTableView: UITableView! // テーブルビュー
+    @IBOutlet weak var textBox: UITextField! // テキストフィールド
+    @IBOutlet weak var editButton: UIButton! // 編集ボタン
+    @IBOutlet weak var datePicker: UIDatePicker! // 日付ピッカー
+    @IBOutlet weak var sliderValue: UILabel! // スライダー横のラベル
+    @IBOutlet weak var valueVar: UISlider! // スライダー
     var pickerView: UIPickerView = UIPickerView()
     
     override func viewDidLoad() {
