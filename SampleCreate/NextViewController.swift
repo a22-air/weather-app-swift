@@ -46,12 +46,11 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         return itemsList.count
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
-        if section == 0 {
-            return self.itemsList[0].count
-        } else if section == 1{
-            return self.itemsList[1].count
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        for (index, items) in self.itemsList.enumerated() {
+            if section == index {
+                return items.count
+            }
         }
         return 0
     }
