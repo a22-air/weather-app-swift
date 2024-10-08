@@ -42,6 +42,9 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         // スライダー横のラベル
         sliderValue.text = "1"
+        
+        // テーブルビューの背景色
+        myTableView.backgroundColor = UIColor.red
 
     }
     
@@ -274,6 +277,19 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         // テキストフィールドにスライダーのvalueをセット
         textBox.text = String(intSliderValue)
     }
+    
+    // MARK: - セグメントの設定
+    // ボタン押下でテーブルビューの背景色を変更
+    @IBAction func colorChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0: myTableView.backgroundColor = UIColor.red
+        case 1: myTableView.backgroundColor = UIColor.yellow
+        case 2: myTableView.backgroundColor = UIColor.green
+        case 3: myTableView.backgroundColor = UIColor.systemPink
+        default: myTableView.backgroundColor = UIColor.red
+        }
+    }
+    
     
 }
 
