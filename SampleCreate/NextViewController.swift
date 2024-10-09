@@ -25,21 +25,38 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        // 天気のAPIを取得する
         let url: URL = URL(string: "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=temperature_2m_max,temperature_2m_min&timezone=Asia%2FTokyo")!
-        let task: URLSessionTask = URLSession.shared.dataTask(with: url, completionHandler: {(data, response, error) in
+        let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+            // エラー発生時
+            if let error = error {
+                print("Error: \(error)")
+                return
+            }
+            // dataがnilでないことを確認
+            guard let data = data else {
+                print("No data received")
+                return
+            }
             do {
-                let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as! [String: Any]
-                print(json)
-                print("count: \(json.count)")
+                // JSONを辞書型に変換
+                let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String: Any]
+                
+                // "daily"キーのデータを取り出し、"time"配列の最初の要素を取得
+                if let dailyData = json["daily"] as? [String: Any],
+                   let timeArray = dailyData["time"] as? [String] {
+                    let firstTime = timeArray[0]
+                    print(firstTime)  // "2024-10-08"
+                }
+            } catch {
+                // エラー発生時
+                print("JSON parsing error: \(error)")
             }
-            catch {
-                print(error)
-            }
-            
         })
+
+        // タスクの実行
         task.resume()
-        
-        
+
         myTableView.dataSource = self
         myTableView.delegate = self
         
