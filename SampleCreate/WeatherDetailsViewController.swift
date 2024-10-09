@@ -9,7 +9,14 @@ import UIKit
 
 class WeatherDetailsViewController: UIViewController {
     var receveItemsList:[[String]] = [[],[]]
-    var today: String = "" // 今日の日付
+    @IBOutlet weak var todayLabel: UILabel!
+    // 今日の日付
+    var today: String = "" {
+        // 変更があればラベルのテキストを変更する
+        didSet{
+            todayLabel.text = today
+        }
+    }
     var maxTemperature: Double = 0.0 // 最高気温
     var minTemperature: Double = 0.0 // 最低気温
     override func viewDidLoad() {
@@ -35,15 +42,18 @@ class WeatherDetailsViewController: UIViewController {
                 
                 // "daily"キーのデータを取り出し、"time"配列の最初の要素を取得
                 if let dailyData = json["daily"] as? [String: Any],
-                   let timeArray = dailyData["time"] as? [String] ,
+                   let timeArray = dailyData["time"] as? [String],
                    let maxTemperatureArray = dailyData["temperature_2m_max"] as? [Double],
                    let minTemperatureArray = dailyData["temperature_2m_min"] as? [Double] {
-                    self.today = timeArray[0]
-                    self.maxTemperature = maxTemperatureArray[0]
-                    self.minTemperature = minTemperatureArray[0]
-                    print("today:",self.today)// "2024-10-09"
-                    print("maxTemperature:",self.maxTemperature)
-                    print("minTemperature:",self.minTemperature)
+                    // メインスレッドで実行する
+                    DispatchQueue.main.async() { () -> Void in
+                        self.today = timeArray[0] // 今日の日付
+                        self.maxTemperature = maxTemperatureArray[0] // 今日の最高気温
+                        self.minTemperature = minTemperatureArray[0] // 今日の最低気温
+                        print("today:",self.today) // 後で削除
+                        print("maxTemperature:",self.maxTemperature) // 後で削除
+                        print("minTemperature:",self.minTemperature) // 後で削除
+                    }
                 }
             } catch {
                 // エラー発生時
@@ -53,6 +63,7 @@ class WeatherDetailsViewController: UIViewController {
 
         // タスクの実行
         task.resume()
+        
     }
     
     @IBAction func backButton(_ sender: Any) {
