@@ -9,7 +9,9 @@ import UIKit
 
 class WeatherDetailsViewController: UIViewController {
     var receveItemsList:[[String]] = [[],[]]
-    @IBOutlet weak var todayLabel: UILabel!
+    @IBOutlet weak var todayLabel: UILabel! // 今日の日付を表示
+    @IBOutlet weak var maxTemperatureLabel: UILabel! // 今日の最高気温を表示
+    @IBOutlet weak var minTemperatureLabel: UILabel! // 今日の最低気温を表示
     // 今日の日付
     var today: String = "" {
         // 変更があればラベルのテキストを変更する
@@ -17,14 +19,25 @@ class WeatherDetailsViewController: UIViewController {
             todayLabel.text = today
         }
     }
-    var maxTemperature: Double = 0.0 // 最高気温
-    var minTemperature: Double = 0.0 // 最低気温
+    // 今日の最高気温
+    var maxTemperature: Double = 0.0 {
+        didSet {
+            maxTemperatureLabel.text = String(maxTemperature)
+        }
+    }
+    // 今日の最低気温
+    var minTemperature: Double = 0.0 {
+        didSet {
+            minTemperatureLabel.text = String(minTemperature)
+        }
+    }
+    var weather: Int = 0 // 天気
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         // 天気のAPIを取得する
-        let url: URL = URL(string: "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=temperature_2m_max,temperature_2m_min&timezone=Asia%2FTokyo")!
+        let url: URL = URL(string: "https://api.open-meteo.com/v1/forecast?latitude=34.69&longitude=135.19&daily=weather_code,temperature_2m_max,temperature_2m_min,uv_index_max,uv_index_clear_sky_max&timezone=Asia%2FTokyo")!
         let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
             // エラー発生時
             if let error = error {
@@ -44,15 +57,18 @@ class WeatherDetailsViewController: UIViewController {
                 if let dailyData = json["daily"] as? [String: Any],
                    let timeArray = dailyData["time"] as? [String],
                    let maxTemperatureArray = dailyData["temperature_2m_max"] as? [Double],
-                   let minTemperatureArray = dailyData["temperature_2m_min"] as? [Double] {
+                   let minTemperatureArray = dailyData["temperature_2m_min"] as? [Double],
+                   let weatherArray = dailyData["weather_code"] as? [Int]{
                     // メインスレッドで実行する
                     DispatchQueue.main.async() { () -> Void in
                         self.today = timeArray[0] // 今日の日付
                         self.maxTemperature = maxTemperatureArray[0] // 今日の最高気温
                         self.minTemperature = minTemperatureArray[0] // 今日の最低気温
+                        self.weather = weatherArray[0]
                         print("today:",self.today) // 後で削除
                         print("maxTemperature:",self.maxTemperature) // 後で削除
                         print("minTemperature:",self.minTemperature) // 後で削除
+                        print("weather",self.weather) // 後で削除
                     }
                 }
             } catch {
