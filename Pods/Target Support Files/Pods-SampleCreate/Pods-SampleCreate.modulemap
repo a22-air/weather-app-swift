@@ -1,0 +1,6 @@
+framework module Pods_SampleCreate {
+  umbrella header "Pods-SampleCreate-umbrella.h"
+
+  export *
+  module * { export * }
+}
