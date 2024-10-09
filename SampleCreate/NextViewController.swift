@@ -8,10 +8,11 @@
 import UIKit
 
 class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,CatchRemoveButton,UIPickerViewDelegate,UIPickerViewDataSource {
-   
+
     var itemsList: [[String]] = [["いちご","オレンジ","もも"],["福岡","宮崎","長崎","沖縄","宮古島","石垣島"]]
     var deletetAllItems:[[Int]] = [[],[]]
     let addresList: [String] = ["兵庫","大阪","京都","奈良"]
+    
     
     @IBOutlet weak var myTableView: UITableView! // テーブルビュー
     @IBOutlet weak var textBox: UITextField! // テキストフィールド
@@ -25,38 +26,6 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        // 天気のAPIを取得する
-        let url: URL = URL(string: "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=temperature_2m_max,temperature_2m_min&timezone=Asia%2FTokyo")!
-        let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-            // エラー発生時
-            if let error = error {
-                print("Error: \(error)")
-                return
-            }
-            // dataがnilでないことを確認
-            guard let data = data else {
-                print("No data received")
-                return
-            }
-            do {
-                // JSONを辞書型に変換
-                let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String: Any]
-                
-                // "daily"キーのデータを取り出し、"time"配列の最初の要素を取得
-                if let dailyData = json["daily"] as? [String: Any],
-                   let timeArray = dailyData["time"] as? [String] {
-                    let firstTime = timeArray[0]
-                    print(firstTime)  // "2024-10-08"
-                }
-            } catch {
-                // エラー発生時
-                print("JSON parsing error: \(error)")
-            }
-        })
-
-        // タスクの実行
-        task.resume()
-
         myTableView.dataSource = self
         myTableView.delegate = self
         

@@ -19,6 +19,19 @@
 		3D8597CA2C92A9A9005BACE9 /* NextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8597C92C92A9A9005BACE9 /* NextViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		3D589D122CB639BC00E1D54E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		3D045A742CAA329F0099413C /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		3D045A752CAA329F0099413C /* MainTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainTableViewCell.xib; sourceTree = "<group>"; };
@@ -89,12 +102,15 @@
 				3D8597AE2C92768E005BACE9 /* Sources */,
 				3D8597AF2C92768E005BACE9 /* Frameworks */,
 				3D8597B02C92768E005BACE9 /* Resources */,
+				3D589D122CB639BC00E1D54E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = SampleCreate;
+			packageProductDependencies = (
+			);
 			productName = SampleCreate;
 			productReference = 3D8597B22C92768E005BACE9 /* SampleCreate.app */;
 			productType = "com.apple.product-type.application";
@@ -126,6 +142,8 @@
 				Base,
 			);
 			mainGroup = 3D8597A92C92768E005BACE9;
+			packageReferences = (
+			);
 			productRefGroup = 3D8597B32C92768E005BACE9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
