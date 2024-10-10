@@ -17,9 +17,17 @@ struct WeatherIcon: Codable {
     let id: String // 天気のアイコンのid
     let description: String // 天気の説明
 }
-
 class WeatherDetailsViewController: UIViewController {
     var receveItemsList:[[String]] = [[],[]]
+    var receveIndexPath: IndexPath = []
+    var selectLocation: String = ""
+    let locationCode: [String: (Double, Double)] = [
+        "兵庫": (34.69, 135.18),
+        "東京": (35.68, 139.69),
+        "北海道": (43.065, 141.347),
+        "沖縄": (26.21, 127.68)
+    ]
+    
     @IBOutlet weak var todayLabel: UILabel! // 今日の日付を表示
     @IBOutlet weak var maxTemperatureLabel: UILabel! // 今日の最高気温を表示
     @IBOutlet weak var minTemperatureLabel: UILabel! // 今日の最低気温を表示
@@ -71,8 +79,23 @@ class WeatherDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-
+        // Do any additional setup after loading the view.//
+        
+        // 押下されたテーブルビューのインデックス番号を使い都道府県のkeyを代入
+        selectLocation = receveItemsList[receveIndexPath[0]][receveIndexPath[1]] // 例："兵庫"を代入
+        
+        // 経度と緯度を返す関数の呼び出し
+        returnLocationCode(location: selectLocation)
+        
+        // 経度と緯度を返す関数
+        func returnLocationCode(location: String) {
+            if let coordinates = locationCode[location] {
+                print("呼び出し成功、緯度: \(coordinates.0)")
+            } else {
+                print("指定された場所が見つかりません")
+            }
+        }
+        
         // 天気のAPIを取得する
         let url: URL = URL(string: "https://api.open-meteo.com/v1/forecast?latitude=34.69&longitude=135.19&daily=weather_code,temperature_2m_max,temperature_2m_min,uv_index_max,uv_index_clear_sky_max&timezone=Asia%2FTokyo")!
         let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in

@@ -9,10 +9,10 @@ import UIKit
 
 class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,CatchRemoveButton,UIPickerViewDelegate,UIPickerViewDataSource {
 
-    var itemsList: [[String]] = [["いちご","オレンジ","もも"],["福岡","宮崎","長崎","沖縄","宮古島","石垣島"]]
+    var itemsList: [[String]] = [["いちご","オレンジ","もも"],["兵庫","東京","北海道","沖縄"]]
     var deletetAllItems:[[Int]] = [[],[]]
     let addresList: [String] = ["兵庫","大阪","京都","奈良"]
-    
+    var sendIndexPath :IndexPath = []
     
     @IBOutlet weak var myTableView: UITableView! // テーブルビュー
     @IBOutlet weak var textBox: UITextField! // テキストフィールド
@@ -90,7 +90,8 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         // 次の画面を変数化する
         let WeatherDetailsViewControllerPage = segue.destination as! WeatherDetailsViewController
         // itemsListを渡す
-        WeatherDetailsViewControllerPage.receveItemsList = itemsList
+        WeatherDetailsViewControllerPage.receveItemsList = itemsList // 遷移しても前のデータに戻らないように遷移先に渡す
+        WeatherDetailsViewControllerPage.receveIndexPath = sendIndexPath // テーブルビューのインデックス番号
     }
     // テーブルの選択ボタンを押下した時の処理
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -100,6 +101,7 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             deletetAllItems[section].append(indexPath.row)
         } else {
             // 編集モードではない時にWeatherViewControllerに画面遷移する
+            sendIndexPath = indexPath // indexPathをWeatherDetailsViewContentに渡すため
             performSegue(withIdentifier: "WeatherViewController", sender: nil)
         }
     }
