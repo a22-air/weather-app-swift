@@ -7,6 +7,17 @@
 
 import UIKit
 
+// プロジェクト内のWeatherCode.jsonの構造体
+struct WeatherData: Codable {
+    let weather_icons: [WeatherIcon]
+}
+// プロジェクト内のWeatherCode.jsonの構造体
+struct WeatherIcon: Codable {
+    let key: Int // 天気のキー
+    let id: String // 天気のアイコンのid
+    let description: String // 天気の説明
+}
+
 class WeatherDetailsViewController: UIViewController {
     var receveItemsList:[[String]] = [[],[]]
     @IBOutlet weak var todayLabel: UILabel! // 今日の日付を表示
@@ -79,6 +90,28 @@ class WeatherDetailsViewController: UIViewController {
                 print("JSON parsing error: \(error)")
             }
         })
+        
+        // プロジェクト内にある"WeatherCode.json"ファイルのパス取得
+        guard let url = Bundle.main.url(forResource: "WeatherCode", withExtension: "json") else {
+            fatalError("ファイルが見つからない")
+        }
+         
+        // WeatherCode.jsonの内容をData型プロパティに読み込み
+        guard let data = try? Data(contentsOf: url) else {
+            fatalError("ファイル読み込みエラー")
+        }
+         
+        // JSONデコード処理
+        let decoder = JSONDecoder()
+        do {
+            let weatherData = try decoder.decode(WeatherData.self, from: data)
+            // デコード成功時の処理
+            for weatherIcon in weatherData.weather_icons {
+                print("Key: \(weatherIcon.key), ID: \(weatherIcon.id), Description: \(weatherIcon.description)")
+            }
+        } catch {
+            print("JSONデコードエラー: \(error)")
+        }
 
         // タスクの実行
         task.resume()
