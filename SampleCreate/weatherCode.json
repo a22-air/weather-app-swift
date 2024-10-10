@@ -1,0 +1,90 @@
+{
+  "weather_icons": [
+    {
+        "key": 0
+        "id": "tenki_mark01_hare",
+        "description": "晴れ"
+    },
+    {
+        "key": 1
+        "id": "tenki_mark01_hare",
+        "description": "晴れ"
+    },
+    {
+        "key": 2
+        "id": "tenki_mark05_kumori",
+        "description": "曇り"
+    },
+    {
+        "key": 3
+        "id": "tenki_mark05_kumori",
+        "description": "曇り"
+    },
+    {
+        "key": 45
+        "id": "tenki_mark05_kumori",
+        "description": "曇り"
+    },
+    {
+        "key": 48
+        "id": "tenki_mark05_kumori",
+        "description": "曇り"
+    },
+    {
+        "key": 51
+        "id": "tenki_mark02_ame",
+        "description": "雨"
+    },
+    {
+        "key": 53
+        "id": "tenki_mark02_ame",
+        "description": "雨"
+    },
+    {
+        "key": 55
+        "id": "tenki_mark02_ame",
+        "description": "雨"
+    },
+    {
+        "key": 56
+        "id": "tenki_mark02_ame",
+        "description": "雨"
+    },
+    {
+        "key": 57
+        "id": "tenki_mark02_ame",
+        "description": "雨"
+    },
+    {
+        "key": 61
+        "id": "tenki_mark03_gouu",
+        "description": "豪雨"
+    },
+    {
+        "key": 63
+        "id": "tenki_mark03_gouu",
+        "description": "豪雨"
+    },
+    {
+        "key": 65
+        "id": "tenki_mark03_gouu",
+        "description": "豪雨"
+    },
+    {
+        "key": 80
+        "id": "tenki_mark06_kurmoriame",
+        "description": "曇りのち雨"
+    },
+    {
+        "key": 95
+        "id": "tenki_mark07_kaminari",
+        "description": "雷"
+    },
+    {
+        "key": 77
+        "id": "tenki_mark08_yuki",
+        "description": "雪"
+    },
+  ]
+}
+
