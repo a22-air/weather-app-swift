@@ -25,6 +25,20 @@ class WeatherDetailsViewController: UIViewController {
     @IBOutlet weak var minTemperatureLabel: UILabel! // 今日の最低気温を表示
     @IBOutlet weak var weatherImage: UIImageView! // 今日の天気の画像を表示
     
+    // APIの天気コードから天気のアイコンを取得
+    func setWeatherIcon(weatherKey: Int) {
+        for weatherDatas in weatherDataArray {
+            // APIの今日の天気のコードからWeatherCode.jsonのkeyと一致したらアイコンを表示
+            if weatherKey == weatherDatas.key {
+                // イメージビューにアイコンをセット
+                weatherImage.image = UIImage(named: weatherDatas.id)
+                return
+            } else {
+                // 何もしない
+            }
+        }
+    }
+    
     // 今日の日付
     var today: String = "" {
         // 変更があればラベルのテキストを変更する
@@ -44,12 +58,21 @@ class WeatherDetailsViewController: UIViewController {
             minTemperatureLabel.text = String(minTemperature)
         }
     }
-    var weather: Int = 0 // 天気
-    
+    // 今日の天気のコード
+    var weather: Int = 0 {
+        didSet {
+            // 今日の天気のコードからアイコンを設定する関数の呼び出し
+            setWeatherIcon(weatherKey: weather)
+        }
+    }
+    // WeatherCode.jsonのデータを格納
+    var weatherDataArray: [WeatherIcon] = []
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+
         // 天気のAPIを取得する
         let url: URL = URL(string: "https://api.open-meteo.com/v1/forecast?latitude=34.69&longitude=135.19&daily=weather_code,temperature_2m_max,temperature_2m_min,uv_index_max,uv_index_clear_sky_max&timezone=Asia%2FTokyo")!
         let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
@@ -105,18 +128,15 @@ class WeatherDetailsViewController: UIViewController {
         let decoder = JSONDecoder()
         do {
             let weatherData = try decoder.decode(WeatherData.self, from: data)
-            // デコード成功時の処理
-            for weatherIcon in weatherData.weather_icons {
-                print("Key: \(weatherIcon.key), ID: \(weatherIcon.id), Description: \(weatherIcon.description)")
-            }
+            // WeatherCode.jsonのデータを配列に格納
+            weatherDataArray = weatherData.weather_icons
         } catch {
             print("JSONデコードエラー: \(error)")
         }
-
+        
         // タスクの実行
         task.resume()
         
-        weatherImage.image = UIImage(named: "sun.max.fill")
     }
     
     @IBAction func backButton(_ sender: Any) {
