@@ -17,10 +17,12 @@ struct WeatherIcon: Codable {
     let id: String // 天気のアイコンのid
     let description: String // 天気の説明
 }
+
 class WeatherDetailsViewController: UIViewController {
-    var receveItemsList:[[String]] = [[],[]]
-    var receveIndexPath: IndexPath = []
-    var selectLocation: String = ""
+    var receveItemsList:[[String]] = [[],[]] // NextViewControllerから受け取ったテーブルビューのデータ
+    var receveIndexPath: IndexPath = [] // NextViewControllerから受け取ったテーブルのindex
+    var selectLocation: String = "" // テーブルビューで押下された都道府県
+    // 各都道府県の経度と緯度
     let locationCode: [String: (Double, Double)] = [
         "兵庫": (34.69, 135.18),
         "東京": (35.68, 139.69),
