@@ -12,6 +12,8 @@ class WeatherDetailsViewController: UIViewController {
     @IBOutlet weak var todayLabel: UILabel! // 今日の日付を表示
     @IBOutlet weak var maxTemperatureLabel: UILabel! // 今日の最高気温を表示
     @IBOutlet weak var minTemperatureLabel: UILabel! // 今日の最低気温を表示
+    @IBOutlet weak var weatherImage: UIImageView! // 今日の天気の画像を表示
+    
     // 今日の日付
     var today: String = "" {
         // 変更があればラベルのテキストを変更する
@@ -32,6 +34,7 @@ class WeatherDetailsViewController: UIViewController {
         }
     }
     var weather: Int = 0 // 天気
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -80,11 +83,13 @@ class WeatherDetailsViewController: UIViewController {
         // タスクの実行
         task.resume()
         
+        weatherImage.image = UIImage(named: "sun.max.fill")
     }
     
     @IBAction func backButton(_ sender: Any) {
         // 前の画面に戻る
     }
+    
     // NextViewControllerにreceveItemsListの値を渡す処理
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let nextViewControllerPage = segue.destination as! NextViewController
