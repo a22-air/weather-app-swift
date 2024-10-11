@@ -87,14 +87,17 @@ class WeatherDetailsViewController: UIViewController {
         selectLocation = receveItemsList[receveIndexPath[0]][receveIndexPath[1]] // 例："兵庫"を代入
         
         // 経度と緯度を返す関数の呼び出し
-        returnLocationCode(location: selectLocation)
+//        returnLocationCode(location: selectLocation)
         
-        // 経度と緯度を返す関数
-        func returnLocationCode(location: String) {
+        // 選択時の都道府県からAPIのURLを生成する関数
+        func urlCreation(location: String) -> String {
             if let coordinates = locationCode[location] {
-                print("呼び出し成功、緯度: \(coordinates.0)")
+                // テーブルビューのインデックスから都道府県を取得しURLをString型で作成
+                var urlString = "https://api.open-meteo.com/v1/forecast?latitude=" + "\(coordinates.0)" + "&longitude=" + "\(coordinates.1)" + "&daily=weather_code,temperature_2m_max,temperature_2m_min,uv_index_max,uv_index_clear_sky_max&timezone=Asia%2FTokyo"
+                return urlString
             } else {
                 print("指定された場所が見つかりません")
+                return "URL結合失敗"
             }
         }
         
