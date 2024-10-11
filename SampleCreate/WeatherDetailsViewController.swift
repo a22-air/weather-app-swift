@@ -75,6 +75,7 @@ class WeatherDetailsViewController: UIViewController {
             setWeatherIcon(weatherKey: weather)
         }
     }
+
     // WeatherCode.jsonのデータを格納
     var weatherDataArray: [WeatherIcon] = []
         
@@ -85,9 +86,6 @@ class WeatherDetailsViewController: UIViewController {
         
         // 押下されたテーブルビューのインデックス番号を使い都道府県のkeyを代入
         selectLocation = receveItemsList[receveIndexPath[0]][receveIndexPath[1]] // 例："兵庫"を代入
-        
-        // 経度と緯度を返す関数の呼び出し
-//        returnLocationCode(location: selectLocation)
         
         // 選択時の都道府県からAPIのURLを生成する関数
         func urlCreation(location: String) -> String {
@@ -100,24 +98,6 @@ class WeatherDetailsViewController: UIViewController {
                 return "URL結合失敗"
             }
         }
-        
-        // MARK: - ここから追加
-        //        var urlComponents = URLComponents(string: "https://api.open-meteo.com/v1/forecast?")!
-        //        urlComponents.queryItems = [
-        //            URLQueryItem(name: "latitude", value: "26.21"),
-        //            URLQueryItem(name: "longitude", value: "127.68"),
-        //            URLQueryItem(name: "daily", value: "weather_code,temperature_2m_max,temperature_2m_min,uv_index_max,uv_index_clear_sky_max"),
-        //            URLQueryItem(name: "timezone", value: "Asia%2FTokyo")
-        //        ]
-        //
-        //        if let url = urlComponents.url {
-        //            let task = URLSession.shared.dataTask(with: url) { data, response, error in
-        //                guard let data = data, error == nil else {
-        //                    print("リクエストエラー: \(error!.localizedDescription)")
-        //                    return
-        //                }
-        //            task.resume()
-        //        }
         
         // MARK: -天気のAPIを取得する
 //        let url: URL = URL(string: "https://api.open-meteo.com/v1/forecast?latitude=26.21&longitude=127.68&daily=weather_code,temperature_2m_max,temperature_2m_min,uv_index_max,uv_index_clear_sky_max&timezone=Asia%2FTokyo")!
