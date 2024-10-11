@@ -120,8 +120,10 @@ class WeatherDetailsViewController: UIViewController {
         //        }
         
         // MARK: -天気のAPIを取得する
-        let url: URL = URL(string: "https://api.open-meteo.com/v1/forecast?latitude=26.21&longitude=127.68&daily=weather_code,temperature_2m_max,temperature_2m_min,uv_index_max,uv_index_clear_sky_max&timezone=Asia%2FTokyo")!
-        
+//        let url: URL = URL(string: "https://api.open-meteo.com/v1/forecast?latitude=26.21&longitude=127.68&daily=weather_code,temperature_2m_max,temperature_2m_min,uv_index_max,uv_index_clear_sky_max&timezone=Asia%2FTokyo")!
+        // 選択された都道府県のクエリパラメータを使用し、URLを作成する
+        let url: URL = URL(string: urlCreation(location: selectLocation))!
+
         let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
             // エラー発生時
             if let error = error {
