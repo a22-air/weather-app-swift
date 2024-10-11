@@ -98,8 +98,27 @@ class WeatherDetailsViewController: UIViewController {
             }
         }
         
-        // 天気のAPIを取得する
-        let url: URL = URL(string: "https://api.open-meteo.com/v1/forecast?latitude=34.69&longitude=135.19&daily=weather_code,temperature_2m_max,temperature_2m_min,uv_index_max,uv_index_clear_sky_max&timezone=Asia%2FTokyo")!
+        // MARK: - ここから追加
+        //        var urlComponents = URLComponents(string: "https://api.open-meteo.com/v1/forecast?")!
+        //        urlComponents.queryItems = [
+        //            URLQueryItem(name: "latitude", value: "26.21"),
+        //            URLQueryItem(name: "longitude", value: "127.68"),
+        //            URLQueryItem(name: "daily", value: "weather_code,temperature_2m_max,temperature_2m_min,uv_index_max,uv_index_clear_sky_max"),
+        //            URLQueryItem(name: "timezone", value: "Asia%2FTokyo")
+        //        ]
+        //
+        //        if let url = urlComponents.url {
+        //            let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        //                guard let data = data, error == nil else {
+        //                    print("リクエストエラー: \(error!.localizedDescription)")
+        //                    return
+        //                }
+        //            task.resume()
+        //        }
+        
+        // MARK: -天気のAPIを取得する
+        let url: URL = URL(string: "https://api.open-meteo.com/v1/forecast?latitude=26.21&longitude=127.68&daily=weather_code,temperature_2m_max,temperature_2m_min,uv_index_max,uv_index_clear_sky_max&timezone=Asia%2FTokyo")!
+        
         let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
             // エラー発生時
             if let error = error {
@@ -139,7 +158,7 @@ class WeatherDetailsViewController: UIViewController {
             }
         })
         
-        // プロジェクト内にある"WeatherCode.json"ファイルのパス取得
+        // MARK: -プロジェクト内にある"WeatherCode.json"ファイルのパス取得
         guard let url = Bundle.main.url(forResource: "WeatherCode", withExtension: "json") else {
             fatalError("ファイルが見つからない")
         }
