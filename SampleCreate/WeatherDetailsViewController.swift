@@ -63,13 +63,13 @@ class WeatherDetailsViewController: UIViewController {
     // 今日の最高気温
     var maxTemperature: Double = 0.0 {
         didSet {
-            maxTemperatureLabel.text = String(maxTemperature)
+            maxTemperatureLabel.text = "最高気温:" + String(maxTemperature)
         }
     }
     // 今日の最低気温
     var minTemperature: Double = 0.0 {
         didSet {
-            minTemperatureLabel.text = String(minTemperature)
+            minTemperatureLabel.text = "最低気温:" + String(minTemperature)
         }
     }
     // 今日の天気のコード
