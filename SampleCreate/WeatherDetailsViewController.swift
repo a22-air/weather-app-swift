@@ -99,7 +99,7 @@ class WeatherDetailsViewController: UIViewController {
         func urlCreation(location: String) -> String {
             if let coordinates = locationCode[location] {
                 // テーブルビューのインデックスから都道府県を取得しURLをString型で作成
-                var urlString = "https://api.open-meteo.com/v1/forecast?latitude=" + "\(coordinates.0)" + "&longitude=" + "\(coordinates.1)" + "&daily=weather_code,temperature_2m_max,temperature_2m_min,uv_index_max,uv_index_clear_sky_max&timezone=Asia%2FTokyo"
+                let urlString = "https://api.open-meteo.com/v1/forecast?latitude=" + "\(coordinates.0)" + "&longitude=" + "\(coordinates.1)" + "&daily=weather_code,temperature_2m_max,temperature_2m_min,uv_index_max,uv_index_clear_sky_max&timezone=Asia%2FTokyo"
                 return urlString
             } else {
                 print("指定された場所が見つかりません")
