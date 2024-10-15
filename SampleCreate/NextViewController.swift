@@ -8,6 +8,13 @@
 import UIKit
 
 class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,CatchRemoveButton,UIPickerViewDelegate,UIPickerViewDataSource {
+    
+    enum colorIndex {
+        static let redIndex = 0
+        static let yellowIndex = 1
+        static let greenIndex = 2
+        static let pinkIndex = 3
+    }
 
     var itemsList: [[String]] = [["いちご","オレンジ","もも"],["兵庫","東京","北海道","沖縄"]]
     var deletetAllItems:[[Int]] = [[],[]]
@@ -20,14 +27,13 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     @IBOutlet weak var datePicker: UIDatePicker! // 日付ピッカー
     @IBOutlet weak var sliderValue: UILabel! // スライダー横のラベル
     @IBOutlet weak var valueVar: UISlider! // スライダー
+    @IBOutlet weak var colorSegments: UISegmentedControl! // カラー用セグメント
+
     var pickerView: UIPickerView = UIPickerView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        myTableView.dataSource = self
-        myTableView.delegate = self
         
         myTableView.register(UINib(nibName:"MainTableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
         
@@ -41,12 +47,6 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         // ピッカー呼び出し
         picker()
-        
-        // スライダー横のラベル
-        sliderValue.text = "1"
-        
-        // テーブルビューの背景色
-        myTableView.backgroundColor = UIColor.red
 
     }
     
@@ -69,7 +69,7 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! MainTableViewCell
         // ゴミ箱アイコンをセット
-        cell.img.image = UIImage(systemName: "trash")
+        //cell.img.image = UIImage(systemName: "trash")
         // テキストフィールドのテキストをテーブルにセット
         if indexPath.section == 0 {
             cell.label.text = itemsList[0][indexPath.row]  // セクション1のデータを設定
@@ -81,7 +81,7 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         //
         cell.imgDelegate = self
         // ボタンのタイトル
-        cell.colorCangeButton.setTitle("色を変更", for: .normal)
+        //cell.colorCangeButton.setTitle("色を変更", for: .normal)
         
         return cell
     }
@@ -286,10 +286,10 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     // ボタン押下でテーブルビューの背景色を変更
     @IBAction func colorChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
-        case 0: myTableView.backgroundColor = UIColor.red
-        case 1: myTableView.backgroundColor = UIColor.yellow
-        case 2: myTableView.backgroundColor = UIColor.green
-        case 3: myTableView.backgroundColor = UIColor.systemPink
+        case colorIndex.redIndex: myTableView.backgroundColor = UIColor.red
+        case colorIndex.yellowIndex: myTableView.backgroundColor = UIColor.yellow
+        case colorIndex.greenIndex: myTableView.backgroundColor = UIColor.green
+        case colorIndex.pinkIndex: myTableView.backgroundColor = UIColor.systemPink
         default: myTableView.backgroundColor = UIColor.red
         }
     }
