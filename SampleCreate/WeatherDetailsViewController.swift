@@ -34,8 +34,8 @@ class WeatherDetailsViewController: UIViewController {
     @IBOutlet weak var maxTemperatureLabel: UILabel! // 今日の最高気温を表示
     @IBOutlet weak var minTemperatureLabel: UILabel! // 今日の最低気温を表示
     @IBOutlet weak var weatherImage: UIImageView! // 今日の天気の画像を表示
-    
     @IBOutlet weak var prefecturesLabel: UILabel! // 選択時の都道府県
+    @IBOutlet weak var weatherLabel: UILabel! // 今日の天気をテキストで表示
     
     // APIの天気コードから天気のアイコンを取得
     func setWeatherIcon(weatherKey: Int) {
@@ -44,6 +44,8 @@ class WeatherDetailsViewController: UIViewController {
             if weatherKey == weatherDatas.key {
                 // イメージビューにアイコンをセット
                 weatherImage.image = UIImage(named: weatherDatas.id)
+                // 天気のアイコンの説明を表示
+                weatherLabel.text = weatherDatas.description
                 return
             } else {
                 // 何もしない
