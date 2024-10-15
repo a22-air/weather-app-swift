@@ -135,7 +135,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <pickerView key="tableFooterView" contentMode="scaleToFill" id="3cf-Lq-Lud">
-                                    <rect key="frame" x="0.0" y="122" width="393" height="178"/>
+                                    <rect key="frame" x="0.0" y="121.66666793823242" width="393" height="178"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 </pickerView>
                                 <prototypes>
@@ -226,6 +226,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nky-ji-V4b">
+                                <rect key="frame" x="65" y="248" width="262" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="最高気温" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bsp-z9-ovc">
                                 <rect key="frame" x="51" y="409" width="83" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -254,10 +258,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nky-ji-V4b">
-                                <rect key="frame" x="65" y="248" width="262" height="128"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cW-no-2Dj">
+                                <rect key="frame" x="65" y="162" width="177" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="65l-bk-MTj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -266,6 +273,7 @@
                     <connections>
                         <outlet property="maxTemperatureLabel" destination="0jv-OF-OPu" id="BER-qq-D1j"/>
                         <outlet property="minTemperatureLabel" destination="0eh-fI-oYw" id="Oxc-ec-IHc"/>
+                        <outlet property="prefecturesLabel" destination="6cW-no-2Dj" id="crX-6v-6km"/>
                         <outlet property="todayLabel" destination="9lX-Xl-S6d" id="nJP-5G-7Ao"/>
                         <outlet property="weatherImage" destination="Nky-ji-V4b" id="sSa-EB-TTs"/>
                     </connections>

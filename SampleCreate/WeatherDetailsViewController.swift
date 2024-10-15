@@ -35,6 +35,8 @@ class WeatherDetailsViewController: UIViewController {
     @IBOutlet weak var minTemperatureLabel: UILabel! // 今日の最低気温を表示
     @IBOutlet weak var weatherImage: UIImageView! // 今日の天気の画像を表示
     
+    @IBOutlet weak var prefecturesLabel: UILabel! // 選択時の都道府県
+    
     // APIの天気コードから天気のアイコンを取得
     func setWeatherIcon(weatherKey: Int) {
         for weatherDatas in weatherDataArray {
@@ -84,8 +86,12 @@ class WeatherDetailsViewController: UIViewController {
 
         // Do any additional setup after loading the view.//
         
+        
         // 押下されたテーブルビューのインデックス番号を使い都道府県のkeyを代入
         selectLocation = receveItemsList[receveIndexPath[0]][receveIndexPath[1]] // 例："兵庫"を代入
+        
+        // テーブルビューで選択した都道府県をラベルに表示する
+        prefecturesLabel.text = selectLocation + "の天気"
         
         // 選択時の都道府県からAPIのURLを生成する関数
         func urlCreation(location: String) -> String {
