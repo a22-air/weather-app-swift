@@ -175,9 +175,9 @@ class WeatherDetailsViewController: UIViewController {
         task.resume()
         
     }
-    
+    // 前の画面に戻る
     @IBAction func backButton(_ sender: Any) {
-        // 前の画面に戻る
+        self.dismiss(animated: true, completion: nil)
     }
     
     // NextViewControllerにreceveItemsListの値を渡す処理
