@@ -111,11 +111,32 @@ class WeatherDetailsViewController: UIViewController {
 //        let url: URL = URL(string: "https://api.open-meteo.com/v1/forecast?latitude=26.21&longitude=127.68&daily=weather_code,temperature_2m_max,temperature_2m_min,uv_index_max,uv_index_clear_sky_max&timezone=Asia%2FTokyo")!
         // 選択された都道府県のクエリパラメータを使用し、URLを作成する
         let url: URL = URL(string: urlCreation(location: selectLocation))!
+        
 
         let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-            // エラー発生時
+            // エラー発生時にアラートを表示する
             if let error = error {
-                print("Error: \(error)")
+                print("Error発生: \(error)")
+                let alertController:UIAlertController =
+                UIAlertController(title:"指定先のURLがありません",
+                                  message: "都道府県を選択してください",
+                                  preferredStyle: .alert)
+                
+                // Cancel のaction
+                let cancelAction:UIAlertAction =
+                UIAlertAction(title: "Back",
+                              style: .cancel,
+                              handler:{
+                    (action:UIAlertAction!) -> Void in
+                    // 前の画面に戻る
+                    self.dismiss(animated: true, completion: nil)
+                })
+                
+                // actionを追加
+                alertController.addAction(cancelAction)
+                
+                // UIAlertControllerの起動
+                self.present(alertController, animated: true, completion: nil)
                 return
             }
             // dataがnilでないことを確認

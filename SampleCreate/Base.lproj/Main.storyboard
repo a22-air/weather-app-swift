@@ -74,7 +74,7 @@
         <!--Next View Controller-->
         <scene sceneID="Nug-FG-rJM">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="bXO-P3-VDY" customClass="NextViewController" customModule="SampleCreate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NextView" modalPresentationStyle="fullScreen" id="bXO-P3-VDY" customClass="NextViewController" customModule="SampleCreate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dRY-C6-3WT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
@@ -496,7 +496,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="iHx-yF-iej"/>
+        <segue reference="Hbm-EY-fj2"/>
     </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="AccentColor">
