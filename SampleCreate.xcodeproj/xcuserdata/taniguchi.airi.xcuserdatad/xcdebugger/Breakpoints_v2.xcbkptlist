@@ -30,10 +30,10 @@
             filePath = "SampleCreate/NextViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "262"
-            endingLineNumber = "262"
-            landmarkName = "touchesBegan(_:with:)"
-            landmarkType = "7">
+            startingLineNumber = "268"
+            endingLineNumber = "268"
+            landmarkName = "NextViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

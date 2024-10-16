@@ -9,11 +9,11 @@ import UIKit
 
 class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,CatchRemoveButton,UIPickerViewDelegate,UIPickerViewDataSource {
     
-    enum colorIndex {
-        static let redIndex = 0
-        static let yellowIndex = 1
-        static let greenIndex = 2
-        static let pinkIndex = 3
+    enum useColorTypes:String, CaseIterable {
+        case red = "赤"
+        case green = "緑"
+        case yellow = "黄"
+        case pink = "ピンク"
     }
 
     var itemsList: [[String]] = [["いちご","オレンジ","もも"],["兵庫","東京","北海道","沖縄"]]
@@ -47,6 +47,13 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         // ピッカー呼び出し
         picker()
+        
+        // セグメントの設定
+        colorSegments.removeAllSegments()
+        useColorTypes.allCases.forEach {
+            colorSegments.insertSegment(withTitle: $0.rawValue, at: colorSegments.numberOfSegments, animated: false)
+        }
+        colorSegments.selectedSegmentIndex = 0
 
     }
     
@@ -218,7 +225,6 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     
     //　MARK: - ここからピッカーの記述
-    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return addresList.count
     }
@@ -285,15 +291,14 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     // MARK: - セグメントの設定
     // ボタン押下でテーブルビューの背景色を変更
     @IBAction func colorChanged(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case colorIndex.redIndex: myTableView.backgroundColor = UIColor.red
-        case colorIndex.yellowIndex: myTableView.backgroundColor = UIColor.yellow
-        case colorIndex.greenIndex: myTableView.backgroundColor = UIColor.green
-        case colorIndex.pinkIndex: myTableView.backgroundColor = UIColor.systemPink
+        switch sender.titleForSegment(at: sender.selectedSegmentIndex) {
+        case useColorTypes.red.rawValue: myTableView.backgroundColor = UIColor.red
+        case useColorTypes.yellow.rawValue: myTableView.backgroundColor = UIColor.yellow
+        case useColorTypes.green.rawValue: myTableView.backgroundColor = UIColor.green
+        case useColorTypes.pink.rawValue: myTableView.backgroundColor = UIColor.systemPink
         default: myTableView.backgroundColor = UIColor.red
         }
     }
-    
     
 }
 
