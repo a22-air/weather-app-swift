@@ -18,7 +18,7 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
     var itemsList: [[String]] = [["いちご","オレンジ","もも"],["兵庫","東京","北海道","沖縄"]]
     var deletetAllItems:[[Int]] = [[],[]]
-    let addresList: [String] = ["兵庫","大阪","京都","奈良"]
+    let addresList: [String] = ["大阪","京都","奈良","神奈川"]
     var sendIndexPath :IndexPath = []
     
     @IBOutlet weak var myTableView: UITableView! // テーブルビュー
