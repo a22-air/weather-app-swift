@@ -117,27 +117,30 @@ class WeatherDetailsViewController: UIViewController {
             // エラー発生時にアラートを表示する
             if let error = error {
                 print("Error発生: \(error)")
-                let alertController:UIAlertController =
-                UIAlertController(title:"指定先のURLがありません",
-                                  message: "都道府県を選択してください",
-                                  preferredStyle: .alert)
-                
-                // Cancel のaction
-                let cancelAction:UIAlertAction =
-                UIAlertAction(title: "Back",
-                              style: .cancel,
-                              handler:{
-                    (action:UIAlertAction!) -> Void in
-                    // 前の画面に戻る
-                    self.dismiss(animated: true, completion: nil)
-                })
-                
-                // actionを追加
-                alertController.addAction(cancelAction)
-                
-                // UIAlertControllerの起動
-                self.present(alertController, animated: true, completion: nil)
-                return
+                // メインスレッドからUIを変更する
+                DispatchQueue.main.async {
+                    let alertController:UIAlertController =
+                    UIAlertController(title:"指定先のURLがありません",
+                                      message: "都道府県を選択してください",
+                                      preferredStyle: .alert)
+                    
+                    // Cancel のaction
+                    let cancelAction:UIAlertAction =
+                    UIAlertAction(title: "Back",
+                                  style: .cancel,
+                                  handler:{
+                        (action:UIAlertAction!) -> Void in
+                        // 前の画面に戻る
+                        self.dismiss(animated: true, completion: nil)
+                    })
+                    
+                    // actionを追加
+                    alertController.addAction(cancelAction)
+                    
+                    // UIAlertControllerの起動
+                    self.present(alertController, animated: true, completion: nil)
+                    return
+                }
             }
             // dataがnilでないことを確認
             guard let data = data else {
