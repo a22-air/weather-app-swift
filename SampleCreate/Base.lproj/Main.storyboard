@@ -34,7 +34,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="画面Bに切り替え"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" animates="NO" id="XtW-nk-xAy"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="aCq-bo-bdc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1HU-9f-RX9">
@@ -79,6 +79,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UYm-5f-y5D">
+                                <rect key="frame" x="4" y="4" width="65" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="65" id="gPA-WC-afx"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Back"/>
+                                <connections>
+                                    <action selector="backButton:" destination="bXO-P3-VDY" eventType="touchUpInside" id="XAK-Ak-eHh"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ye6-Kj-pfB">
                                 <rect key="frame" x="260" y="49" width="56" height="34"/>
                                 <constraints>
@@ -233,9 +244,11 @@
                             <constraint firstItem="Wtm-gg-02s" firstAttribute="top" secondItem="wfk-fB-Uif" secondAttribute="bottom" constant="10" id="0Ny-LS-A0W"/>
                             <constraint firstItem="A2R-Iu-BoH" firstAttribute="top" secondItem="Vzd-nQ-yOj" secondAttribute="bottom" constant="8" symbolic="YES" id="1ix-ee-Dff"/>
                             <constraint firstItem="SUg-zT-8mK" firstAttribute="leading" secondItem="KBs-Tk-aMw" secondAttribute="leading" constant="9" id="4p8-Hq-V0v"/>
+                            <constraint firstItem="UYm-5f-y5D" firstAttribute="top" secondItem="KBs-Tk-aMw" secondAttribute="top" constant="4" id="50h-YK-UV7"/>
                             <constraint firstItem="9M4-vV-ah9" firstAttribute="leading" secondItem="SUg-zT-8mK" secondAttribute="trailing" constant="26" id="5Lq-KS-c29"/>
                             <constraint firstItem="YXU-NB-biE" firstAttribute="trailing" secondItem="KBs-Tk-aMw" secondAttribute="trailing" id="DAM-Gb-afk"/>
                             <constraint firstItem="Kau-jY-i3u" firstAttribute="leading" secondItem="KBs-Tk-aMw" secondAttribute="leading" constant="9" id="EBB-Ga-QFo"/>
+                            <constraint firstItem="UYm-5f-y5D" firstAttribute="leading" secondItem="KBs-Tk-aMw" secondAttribute="leading" constant="4" id="Ecr-To-OYD"/>
                             <constraint firstItem="YXU-NB-biE" firstAttribute="leading" secondItem="KBs-Tk-aMw" secondAttribute="leading" id="Eji-d3-pza"/>
                             <constraint firstItem="KBs-Tk-aMw" firstAttribute="trailing" secondItem="8K3-j9-P33" secondAttribute="trailing" constant="15" id="MDr-0M-a2W"/>
                             <constraint firstItem="wfk-fB-Uif" firstAttribute="leading" secondItem="KBs-Tk-aMw" secondAttribute="leading" constant="9" id="Nim-NQ-pnp"/>
@@ -438,6 +451,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="戻る" cornerStyle="small"/>
                                 <connections>
+                                    <action selector="backButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hDR-AR-Q1e"/>
                                     <segue destination="L0W-Dp-KqC" kind="show" animates="NO" id="h4K-E9-OSm"/>
                                 </connections>
                             </button>
@@ -484,7 +498,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="F1P-7O-vEj"/>
                     <connections>
-                        <outlet property="back" destination="9as-Gc-Gre" id="29C-Ao-8u6"/>
                         <outlet property="num1" destination="fpT-lm-aF7" id="ES6-G5-84E"/>
                         <outlet property="num2" destination="8An-bP-NDL" id="ZZU-ac-Q5g"/>
                         <outlet property="result" destination="SrJ-MD-YaE" id="4Ya-jh-u8E"/>
@@ -496,7 +509,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Hbm-EY-fj2"/>
+        <segue reference="iHx-yF-iej"/>
     </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="AccentColor">

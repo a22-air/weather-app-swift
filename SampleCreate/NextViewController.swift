@@ -300,5 +300,10 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
     }
     
+    // 前の画面に戻る
+    @IBAction func backButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
 

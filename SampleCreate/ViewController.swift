@@ -12,7 +12,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var result: UILabel!
     @IBOutlet weak var num1: UITextField!
     @IBOutlet weak var num2: UITextField!
-    @IBOutlet weak var back: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,5 +31,9 @@ class ViewController: UIViewController {
         result.text = "\(sumResult)"
     }
    
+    // 前の画面に戻る
+    @IBAction func backButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
