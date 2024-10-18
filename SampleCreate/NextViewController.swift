@@ -105,23 +105,90 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
     }
     // WeatherDetailsViewControllerの画面にitemsListを渡す処理
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        // 次の画面を変数化する
+//        let WeatherDetailsViewControllerPage = segue.destination as! WeatherDetailsViewController
+//        // itemsListを渡す
+//        WeatherDetailsViewControllerPage.receveItemsList = itemsList // 遷移しても前のデータに戻らないように遷移先に渡す
+//        WeatherDetailsViewControllerPage.receveIndexPath = sendIndexPath // テーブルビューのインデックス番号
+//    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        // 遷移先がWeatherDetailsViewControllerであるかをチェック
+//        if let weatherDetailsViewControllerPage = segue.destination as? WeatherDetailsViewController {
+//            // itemsListを渡す
+//            weatherDetailsViewControllerPage.receveItemsList = itemsList
+//            // インデックスパスを渡す
+//            weatherDetailsViewControllerPage.receveIndexPath = sendIndexPath
+//        } else {
+//            print("Destination is not WeatherDetailsViewController")
+//        }
+//    }
+//    // テーブルの選択ボタンを押下した時の処理
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        // 編集モードだった場合の処理
+//        if myTableView.isEditing{
+//            let section: Int = indexPath.first ?? 0
+//            deletetAllItems[section].append(indexPath.row)
+//        } else {
+//            // 編集モードではない時にWeatherViewControllerに画面遷移する
+////
+//            if indexPath.section == 0 {
+//                print("1の画面")
+//                
+//                let vc = self.storyboard?.instantiateViewController(withIdentifier: "FruitsViewController") as! FriutsViewController
+//                self.present(vc, animated: true)
+////
+//            } else {
+//                print("2の画面")
+////                sendIndexPath = indexPath // indexPathをWeatherDetailsViewContentに渡すため
+////                performSegue(withIdentifier: "WeatherViewController", sender: nil)
+//                let vc = self.storyboard?.instantiateViewController(withIdentifier: "WeatherViewController") as! WeatherDetailsViewController
+//                self.present(vc, animated: true)
+//            }
+//        }
+//    }
+    // テーブル押下時に画面遷移する処理（セクション1とセクション2で異なる画面に遷移)
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // 次の画面を変数化する
-        let WeatherDetailsViewControllerPage = segue.destination as! WeatherDetailsViewController
-        // itemsListを渡す
-        WeatherDetailsViewControllerPage.receveItemsList = itemsList // 遷移しても前のデータに戻らないように遷移先に渡す
-        WeatherDetailsViewControllerPage.receveIndexPath = sendIndexPath // テーブルビューのインデックス番号
+        // 遷移先が WeatherDetailsViewController であるかをチェック
+        if let weatherDetailsViewControllerPage = segue.destination as? WeatherDetailsViewController {
+            // itemsList を渡す
+            weatherDetailsViewControllerPage.receveItemsList = itemsList
+            // インデックスパスを渡す
+            weatherDetailsViewControllerPage.receveIndexPath = sendIndexPath
+        } else {
+            print("WeatherDetailsViewControllerではありません")
+        }
     }
+
     // テーブルの選択ボタンを押下した時の処理
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 編集モードだった場合の処理
-        if myTableView.isEditing{
-            let section: Int = indexPath.first ?? 0
+        if tableView.isEditing {
+            let section: Int = indexPath.section // section番号の取得
             deletetAllItems[section].append(indexPath.row)
         } else {
-            // 編集モードではない時にWeatherViewControllerに画面遷移する
-            sendIndexPath = indexPath // indexPathをWeatherDetailsViewContentに渡すため
-            performSegue(withIdentifier: "WeatherViewController", sender: nil)
+            // 編集モードではない時に異なる画面に遷移する
+            if indexPath.section == 0 {
+                if let vc = storyboard?.instantiateViewController(withIdentifier: "FruitsViewController") as? FriutsViewController {
+                    // FruitsViewController への遷移
+                    self.present(vc, animated: true, completion: nil)
+                } else {
+                    print("FruitsViewController が見つかりませんでした")
+                }
+            } else {
+                // sendIndexPathを設定してデータを渡す
+                sendIndexPath = indexPath
+                
+                if let vc = storyboard?.instantiateViewController(withIdentifier: "WeatherViewController") as? WeatherDetailsViewController {
+                    // データを直接渡す
+                    vc.receveItemsList = itemsList
+                    vc.receveIndexPath = sendIndexPath
+                    // WeatherDetailsViewController への遷移
+                    self.present(vc, animated: true, completion: nil)
+                } else {
+                    print("WeatherViewController が見つかりませんでした")
+                }
+            }
         }
     }
     // セクション間のヘッダー設定
