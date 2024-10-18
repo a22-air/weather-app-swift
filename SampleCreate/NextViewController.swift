@@ -121,6 +121,11 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             // 編集モードではない時に異なる画面に遷移する
             if indexPath.section == 0 {
                 if let vc = storyboard?.instantiateViewController(withIdentifier: "FruitViewController") as? FruitViewController {
+                    // sendIndexPathを設定してデータを渡す
+                    sendIndexPath = indexPath
+                    // データを直接渡す
+                    vc.receveItemsList = itemsList
+                    vc.receveIndexPath = sendIndexPath
                     // FruitsViewController への遷移
                     self.present(vc, animated: true, completion: nil)
                 } else {

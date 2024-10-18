@@ -10,11 +10,18 @@ import UIKit
 class FruitViewController: UIViewController {
 
     @IBOutlet weak var screenLabel: UILabel!
+    @IBOutlet weak var fruitLabel: UILabel!
+    
+    var receveItemsList:[[String]] = [[],[]] // NextViewControllerから受け取ったテーブルビューのデータ
+    var receveIndexPath: IndexPath = [] // NextViewControllerから受け取ったテーブルのindex
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        screenLabel.textColor = UIColor.red
+
+        // テーブルビューで選択されたフルーツをラベルにセット
+        fruitLabel.text = receveItemsList[receveIndexPath[0]][receveIndexPath[1]]
     }
     
 
