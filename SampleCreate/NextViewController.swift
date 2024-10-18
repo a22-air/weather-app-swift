@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,CatchRemoveButton,UIPickerViewDelegate,UIPickerViewDataSource,SubTableViewCellDelegate {
+class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,CatchRemoveButton,UIPickerViewDelegate,UIPickerViewDataSource,CatchRemove {
     
     enum useColorTypes:String, CaseIterable {
         case red = "赤"
@@ -99,9 +99,8 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         } else { // セクション2のカスタムセルの設定
             let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherCell", for: indexPath) as! WeatherTableViewCell
             cell.label.text = itemsList[1][indexPath.row]
-//            cell.imgDelegate = self
-//            cell.indexNum = indexPath.row
-//            cell.imgDelegate = self
+            cell.imgDelegate = self
+            cell.indexNum = indexPath.row
             return cell
         }
     }
@@ -198,7 +197,6 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     // セルを削除する関数
     func removeCell(myCell: UITableViewCell){
-        print("OK")
         guard let indexPath = myTableView.indexPath(for: myCell) else {
             return
         }
