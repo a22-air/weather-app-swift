@@ -79,21 +79,14 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         // セクション1のカスタムセルの設定
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! MainTableViewCell
-            // ゴミ箱アイコンをセット
-            //cell.img.image = UIImage(systemName: "trash")
             // テキストフィールドのテキストをテーブルにセット
             if indexPath.section == 0 {
                 cell.label.text = itemsList[0][indexPath.row]  // セクション1のデータを設定
             } else if indexPath.section == 1 {
                 cell.label.text = itemsList[1][indexPath.row]  // セクション2のデータを設定
             }
-            // カスタムセルのindex
-            cell.indexNum = indexPath.row
-            //
+            cell.indexNum = indexPath.row // カスタムセルのindex
             cell.imgDelegate = self
-            // ボタンのタイトル
-            //cell.colorCangeButton.setTitle("色を変更", for: .normal)
-            
             return cell
             
         } else { // セクション2のカスタムセルの設定
@@ -343,15 +336,6 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     // 前の画面に戻る
     @IBAction func backButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
-    }
-    // デリゲートメソッドの実装
-        func didTapButtonInCell(_ cell: SubTableViewCell) {
-            // printLog() 関数を呼び出す
-            printLog()
-        }
-    // SubTableViewCell用の関数
-    func printLog(){
-        print("呼び出し成功")
     }
 }
 
