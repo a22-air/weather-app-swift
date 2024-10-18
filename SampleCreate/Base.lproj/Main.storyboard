@@ -282,23 +282,49 @@
                         <outlet property="sliderValue" destination="9M4-vV-ah9" id="gAF-yj-JNV"/>
                         <outlet property="textBox" destination="Wtm-gg-02s" id="MEC-1D-1aA"/>
                         <outlet property="valueVar" destination="SUg-zT-8mK" id="3dv-Dd-Efw"/>
-                        <segue destination="62O-LX-4SG" kind="show" identifier="WeatherViewController" animates="NO" id="hrC-Eo-PK9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pxv-z8-PMc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1257.2519083969464" y="693.66197183098598"/>
         </scene>
+        <!--Friuts View Controller-->
+        <scene sceneID="kq3-G0-6xo">
+            <objects>
+                <viewController storyboardIdentifier="FruitsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="L1X-3y-627" customClass="FriutsViewController" customModule="SampleCreate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7ZO-ZF-Loa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="画面D" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Hc-8b-fK3">
+                                <rect key="frame" x="123" y="75" width="46" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="aXX-20-kkd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="screenLabel" destination="9Hc-8b-fK3" id="ewY-Ge-fwQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LoI-qz-Jqf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1258" y="1375"/>
+        </scene>
         <!--Weather Details View Controller-->
         <scene sceneID="6mK-gx-E0V">
             <objects>
-                <viewController storyboardIdentifier="WeatherViewController" id="62O-LX-4SG" customClass="WeatherDetailsViewController" customModule="SampleCreate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WeatherViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="62O-LX-4SG" customClass="WeatherDetailsViewController" customModule="SampleCreate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A1V-M1-TMS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TIQ-lr-TjD">
-                                <rect key="frame" x="4" y="4" width="62" height="35"/>
+                                <rect key="frame" x="4" y="24" width="62" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Uaz-XI-ybS"/>
                                     <constraint firstAttribute="width" constant="62" id="YT9-HU-KXX"/>
@@ -310,7 +336,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cW-no-2Dj">
-                                <rect key="frame" x="8" y="51" width="180" height="50"/>
+                                <rect key="frame" x="8" y="71" width="180" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="fdP-DD-8Ky"/>
                                     <constraint firstAttribute="height" constant="50" id="m9z-S3-Ddi"/>
@@ -320,7 +346,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9lX-Xl-S6d">
-                                <rect key="frame" x="8" y="109" width="186" height="50"/>
+                                <rect key="frame" x="8" y="129" width="186" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="rBU-bI-kPd"/>
                                 </constraints>
@@ -328,13 +354,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nky-ji-V4b">
-                                <rect key="frame" x="8" y="233" width="304" height="150"/>
+                                <rect key="frame" x="8" y="253" width="304" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="Hn8-ZC-Uqk"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0jv-OF-OPu">
-                                <rect key="frame" x="8" y="391" width="304" height="50"/>
+                                <rect key="frame" x="8" y="411" width="304" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Sjd-xo-Xk0"/>
                                 </constraints>
@@ -343,7 +369,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0eh-fI-oYw">
-                                <rect key="frame" x="8" y="449" width="304" height="50"/>
+                                <rect key="frame" x="8" y="469" width="304" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="hgC-8d-Lsx"/>
                                 </constraints>
@@ -352,7 +378,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLh-uL-al0">
-                                <rect key="frame" x="12" y="175" width="296" height="50"/>
+                                <rect key="frame" x="12" y="195" width="296" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Bhy-ra-05c"/>
                                 </constraints>
@@ -509,7 +535,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="iHx-yF-iej"/>
+        <segue reference="Hbm-EY-fj2"/>
     </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="AccentColor">

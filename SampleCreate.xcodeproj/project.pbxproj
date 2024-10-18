@@ -18,6 +18,9 @@
 		3D8597BF2C927690005BACE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D8597BE2C927690005BACE9 /* Assets.xcassets */; };
 		3D8597C22C927690005BACE9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 3D8597C12C927690005BACE9 /* Base */; };
 		3D8597CA2C92A9A9005BACE9 /* NextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8597C92C92A9A9005BACE9 /* NextViewController.swift */; };
+		3DE034F62CC0973500E93BA4 /* SubTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DE034F52CC0973500E93BA4 /* SubTableViewCell.xib */; };
+		3DE034F72CC0973500E93BA4 /* SubTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE034F42CC0973500E93BA4 /* SubTableViewCell.swift */; };
+		3DE034FF2CC0CFD800E93BA4 /* FriutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE034FE2CC0CFD800E93BA4 /* FriutsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,6 +50,9 @@
 		3D8597C12C927690005BACE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D8597C32C927690005BACE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D8597C92C92A9A9005BACE9 /* NextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextViewController.swift; sourceTree = "<group>"; };
+		3DE034F42CC0973500E93BA4 /* SubTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTableViewCell.swift; sourceTree = "<group>"; };
+		3DE034F52CC0973500E93BA4 /* SubTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubTableViewCell.xib; sourceTree = "<group>"; };
+		3DE034FE2CC0CFD800E93BA4 /* FriutsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriutsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +91,10 @@
 				3D8597C92C92A9A9005BACE9 /* NextViewController.swift */,
 				3D045A742CAA329F0099413C /* MainTableViewCell.swift */,
 				3D045A752CAA329F0099413C /* MainTableViewCell.xib */,
+				3DE034F42CC0973500E93BA4 /* SubTableViewCell.swift */,
+				3DE034F52CC0973500E93BA4 /* SubTableViewCell.xib */,
 				3D8597BB2C92768E005BACE9 /* Main.storyboard */,
+				3DE034FE2CC0CFD800E93BA4 /* FriutsViewController.swift */,
 				3D3113312CAE6A900025A5B3 /* WeatherDetailsViewController.swift */,
 				3D8597BE2C927690005BACE9 /* Assets.xcassets */,
 				3D589D132CB76E6500E1D54E /* WeatherCode.json */,
@@ -161,6 +170,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DE034F62CC0973500E93BA4 /* SubTableViewCell.xib in Resources */,
 				3D8597BF2C927690005BACE9 /* Assets.xcassets in Resources */,
 				3D8597C22C927690005BACE9 /* Base in Resources */,
 				3D045A772CAA329F0099413C /* MainTableViewCell.xib in Resources */,
@@ -179,7 +189,9 @@
 				3D8597BA2C92768E005BACE9 /* ViewController.swift in Sources */,
 				3D8597CA2C92A9A9005BACE9 /* NextViewController.swift in Sources */,
 				3D3113322CAE6A900025A5B3 /* WeatherDetailsViewController.swift in Sources */,
+				3DE034F72CC0973500E93BA4 /* SubTableViewCell.swift in Sources */,
 				3D8597B62C92768E005BACE9 /* AppDelegate.swift in Sources */,
+				3DE034FF2CC0CFD800E93BA4 /* FriutsViewController.swift in Sources */,
 				3D8597B82C92768E005BACE9 /* SceneDelegate.swift in Sources */,
 				3D045A762CAA329F0099413C /* MainTableViewCell.swift in Sources */,
 			);
