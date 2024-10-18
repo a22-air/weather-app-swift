@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,CatchRemoveButton,UIPickerViewDelegate,UIPickerViewDataSource {
+class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,CatchRemoveButton,UIPickerViewDelegate,UIPickerViewDataSource,SubTableViewCellDelegate {
     
     enum useColorTypes:String, CaseIterable {
         case red = "赤"
@@ -38,6 +38,7 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         // 使用するカスタムセルの登録
         myTableView.register(UINib(nibName:"MainTableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
         myTableView.register(UINib(nibName: "SubTableViewCell", bundle: nil), forCellReuseIdentifier: "SubCell")
+        myTableView.register(UINib(nibName: "WeatherTableViewCell", bundle: nil), forCellReuseIdentifier: "WeatherCell")
         // テキストフィールドのレイアウトの指定
         textBox.layer.borderColor = UIColor.gray.cgColor
         textBox.layer.borderWidth = 1.0
@@ -96,9 +97,9 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             return cell
             
         } else { // セクション2のカスタムセルの設定
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SubCell", for: indexPath) as! SubTableViewCell
-            cell.titleLabel.text = itemsList[1][indexPath.row]
-            cell.imgDelegate = self
+            let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherCell", for: indexPath) as! WeatherTableViewCell
+            cell.label.text = itemsList[1][indexPath.row]
+//            cell.imgDelegate = self
 //            cell.indexNum = indexPath.row
 //            cell.imgDelegate = self
             return cell
@@ -149,6 +150,7 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             }
         }
     }
+
     // セクション間のヘッダー設定
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
     {
@@ -192,8 +194,11 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         return 34 // フッターの高さを指定
     }
 
+    
+    
     // セルを削除する関数
     func removeCell(myCell: UITableViewCell){
+        print("OK")
         guard let indexPath = myTableView.indexPath(for: myCell) else {
             return
         }
@@ -341,6 +346,14 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     @IBAction func backButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
+    // デリゲートメソッドの実装
+        func didTapButtonInCell(_ cell: SubTableViewCell) {
+            // printLog() 関数を呼び出す
+            printLog()
+        }
+    // SubTableViewCell用の関数
+    func printLog(){
+        print("呼び出し成功")
+    }
 }
 
