@@ -35,8 +35,9 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        // 使用するカスタムセルの登録
         myTableView.register(UINib(nibName:"MainTableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
-        
+        myTableView.register(UINib(nibName: "SubTableViewCell", bundle: nil), forCellReuseIdentifier: "SubCell")
         // テキストフィールドのレイアウトの指定
         textBox.layer.borderColor = UIColor.gray.cgColor
         textBox.layer.borderWidth = 1.0
@@ -74,23 +75,34 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! MainTableViewCell
-        // ゴミ箱アイコンをセット
-        //cell.img.image = UIImage(systemName: "trash")
-        // テキストフィールドのテキストをテーブルにセット
+        // セクション1のカスタムセルの設定
         if indexPath.section == 0 {
-            cell.label.text = itemsList[0][indexPath.row]  // セクション1のデータを設定
-        } else if indexPath.section == 1 {
-            cell.label.text = itemsList[1][indexPath.row]  // セクション2のデータを設定
+            let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! MainTableViewCell
+            // ゴミ箱アイコンをセット
+            //cell.img.image = UIImage(systemName: "trash")
+            // テキストフィールドのテキストをテーブルにセット
+            if indexPath.section == 0 {
+                cell.label.text = itemsList[0][indexPath.row]  // セクション1のデータを設定
+            } else if indexPath.section == 1 {
+                cell.label.text = itemsList[1][indexPath.row]  // セクション2のデータを設定
+            }
+            // カスタムセルのindex
+            cell.indexNum = indexPath.row
+            //
+            cell.imgDelegate = self
+            // ボタンのタイトル
+            //cell.colorCangeButton.setTitle("色を変更", for: .normal)
+            
+            return cell
+            
+        } else { // セクション2のカスタムセルの設定
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SubCell", for: indexPath) as! SubTableViewCell
+            cell.titleLabel.text = itemsList[1][indexPath.row]
+            cell.imgDelegate = self
+//            cell.indexNum = indexPath.row
+//            cell.imgDelegate = self
+            return cell
         }
-        // カスタムセルのindex
-        cell.indexNum = indexPath.row
-        //
-        cell.imgDelegate = self
-        // ボタンのタイトル
-        //cell.colorCangeButton.setTitle("色を変更", for: .normal)
-        
-        return cell
     }
     // WeatherDetailsViewControllerの画面にitemsListを渡す処理
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
