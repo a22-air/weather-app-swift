@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FriutsViewController: UIViewController {
+class FruitViewController: UIViewController {
 
     @IBOutlet weak var screenLabel: UILabel!
     override func viewDidLoad() {

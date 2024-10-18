@@ -288,10 +288,10 @@
             </objects>
             <point key="canvasLocation" x="-1257.2519083969464" y="693.66197183098598"/>
         </scene>
-        <!--Friuts View Controller-->
+        <!--Fruit View Controller-->
         <scene sceneID="kq3-G0-6xo">
             <objects>
-                <viewController storyboardIdentifier="FruitsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="L1X-3y-627" customClass="FriutsViewController" customModule="SampleCreate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FruitViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="L1X-3y-627" customClass="FruitViewController" customModule="SampleCreate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7ZO-ZF-Loa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

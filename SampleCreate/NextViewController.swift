@@ -120,7 +120,7 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         } else {
             // 編集モードではない時に異なる画面に遷移する
             if indexPath.section == 0 {
-                if let vc = storyboard?.instantiateViewController(withIdentifier: "FruitsViewController") as? FriutsViewController {
+                if let vc = storyboard?.instantiateViewController(withIdentifier: "FruitViewController") as? FruitViewController {
                     // FruitsViewController への遷移
                     self.present(vc, animated: true, completion: nil)
                 } else {
