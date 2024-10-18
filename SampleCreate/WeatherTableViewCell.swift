@@ -6,7 +6,7 @@
 //
 
 import UIKit
-protocol CatchRemove {
+protocol Section2RemoveCell {
     func removeCell(myCell:UITableViewCell)
 }
 class WeatherTableViewCell: UITableViewCell {
@@ -15,7 +15,7 @@ class WeatherTableViewCell: UITableViewCell {
     @IBOutlet weak var img: UIImageView!
     
     var indexNum:Int = -1
-    var imgDelegate: CatchRemove?
+    var imgDelegate: Section2RemoveCell?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

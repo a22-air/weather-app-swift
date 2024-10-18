@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,CatchRemoveButton,UIPickerViewDelegate,UIPickerViewDataSource,CatchRemove {
+class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,Section1RemoveCell,UIPickerViewDelegate,UIPickerViewDataSource,Section2RemoveCell {
     
     enum useColorTypes:String, CaseIterable {
         case red = "赤"

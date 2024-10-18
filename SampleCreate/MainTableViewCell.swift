@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol CatchRemoveButton {
+protocol Section1RemoveCell {
     func removeCell(myCell:UITableViewCell)
 }
 
@@ -18,7 +18,7 @@ class MainTableViewCell: UITableViewCell {
     @IBOutlet weak var colorCangeButton: UIButton!
     
     var indexNum:Int = -1
-    var imgDelegate: CatchRemoveButton?
+    var imgDelegate: Section1RemoveCell?
     
     override func awakeFromNib() {
         super.awakeFromNib()
