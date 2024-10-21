@@ -29,6 +29,8 @@ class MainTableViewCell: UITableViewCell {
         
         // ボタンのアクションを設定
         colorCangeButton.addTarget(self, action: #selector(changeColor), for: .touchUpInside)
+        
+        label.text = ""
     }
 
     // セルの背景を変更する処理

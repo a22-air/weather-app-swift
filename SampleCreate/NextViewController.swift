@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,Section1RemoveCell,UIPickerViewDelegate,UIPickerViewDataSource,Section2RemoveCell {
     
@@ -30,6 +31,7 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     @IBOutlet weak var colorSegments: UISegmentedControl! // カラー用セグメント
 
     var pickerView: UIPickerView = UIPickerView()
+    let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,12 +68,20 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        for (index, items) in self.itemsList.enumerated() {
-            if section == index {
-                return items.count
-            }
+//        for (index, items) in self.itemsList.enumerated() {
+//            if section == index {
+//                return items.count
+//            }
+//        }
+//        return 0
+        // realmのデータを呼び出し
+        let fruitData = realm.objects(Fruit.self)
+        // データがなければ0を返す
+        if fruitData.count == 0 {
+            return 0
+        } else {
+            return fruitData.count
         }
-        return 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
@@ -81,7 +91,11 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! MainTableViewCell
             // テキストフィールドのテキストをテーブルにセット
             if indexPath.section == 0 {
-                cell.label.text = itemsList[0][indexPath.row]  // セクション1のデータを設定
+//                cell.label.text = itemsList[0][indexPath.row]  // セクション1のデータを設定
+                // realmのFruitを呼び出し
+                let fruitData = realm.objects(Fruit.self)
+                // realmのデータをセット
+                cell.textLabel!.text = "\(fruitData[indexPath.row].name)"
             } else if indexPath.section == 1 {
                 cell.label.text = itemsList[1][indexPath.row]  // セクション2のデータを設定
             }
@@ -205,7 +219,16 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     // 追加ボタン1のハンドラ
     @IBAction func addText(_ sender: Any) {
         // セクション1にテキストを追加
-        addTextToSection(itemArray: &itemsList[0], section: 0)
+//        addTextToSection(itemArray: &itemsList[0], section: 0)
+        let fruit = Fruit()
+        fruit.name = textBox.text!
+        // 追加
+        try! realm.write {
+            realm.add(fruit)
+        }
+        
+        textBox.text = ""
+        myTableView.reloadData()
     }
     // 追加ボタン2のハンドラ
     @IBAction func addTextSection2(_ sender: Any) {
