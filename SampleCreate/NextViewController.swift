@@ -58,7 +58,22 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             colorSegments.insertSegment(withTitle: $0.rawValue, at: colorSegments.numberOfSegments, animated: false)
         }
         colorSegments.selectedSegmentIndex = 0
-
+        
+        // realm確認ログ
+        let fruitData = realm.objects(Fruit.self)
+        print("全てのデータ",fruitData)
+        // 追加
+//        let fruit = Fruit()
+//        try! realm.write {
+//            realm.delete(fruitData[0])
+//        }
+        // 削除
+//        let fruit = Fruit()
+//        fruit.name = textBox.text!
+//        try! realm.write {
+//            realm.add(fruit)
+//        }
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int
@@ -105,7 +120,7 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             
         } else { // セクション2のカスタムセルの設定
             let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherCell", for: indexPath) as! WeatherTableViewCell
-            cell.label.text = itemsList[1][indexPath.row]
+//            cell.label.text = itemsList[1][indexPath.row]
             cell.imgDelegate = self
             cell.indexNum = indexPath.row
             return cell
@@ -212,9 +227,17 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         guard let indexPath = myTableView.indexPath(for: myCell) else {
             return
         }
-        let section =  indexPath.first ?? 0
-        itemsList[section].remove(at: indexPath.row)
-        myTableView.deleteRows(at: [indexPath], with: .automatic)
+//        let section =  indexPath.first ?? 0
+//        itemsList[section].remove(at: indexPath.row)
+//        myTableView.deleteRows(at: [indexPath], with: .automatic)
+        let realm = try! Realm()
+        let fruit = realm.objects(Fruit.self)[indexPath.row]
+        // 削除
+        try! realm.write {
+            realm.delete(fruit)
+        }
+        
+        myTableView.reloadData()
     }
     // 追加ボタン1のハンドラ
     @IBAction func addText(_ sender: Any) {
