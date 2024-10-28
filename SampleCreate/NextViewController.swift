@@ -58,22 +58,6 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             colorSegments.insertSegment(withTitle: $0.rawValue, at: colorSegments.numberOfSegments, animated: false)
         }
         colorSegments.selectedSegmentIndex = 0
-        
-        // realm確認ログ
-        let fruitData = realm.objects(Fruit.self)
-        print("全てのデータ",fruitData)
-        // 追加
-//        let fruit = Fruit()
-//        try! realm.write {
-//            realm.delete(fruitData[0])
-//        }
-        // 削除
-//        let fruit = Fruit()
-//        fruit.name = textBox.text!
-//        try! realm.write {
-//            realm.add(fruit)
-//        }
-        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int

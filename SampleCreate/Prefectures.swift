@@ -6,3 +6,8 @@
 //
 
 import Foundation
+import RealmSwift
+
+class Prefectures: Object {
+    @objc dynamic var place = ""
+}
