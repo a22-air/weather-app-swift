@@ -239,44 +239,37 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         myTableView.reloadData()
     }
-    // 追加ボタン1のハンドラ
-    @IBAction func addText(_ sender: Any) {
-        // セクション1にテキストを追加
-//        addTextToSection(itemArray: &itemsList[0], section: 0)
-        let fruit = Fruit()
-        fruit.name = textBox.text!
-        // 追加
-        try! realm.write {
-            realm.add(fruit)
-        }
-        
-        textBox.text = ""
-        myTableView.reloadData()
-    }
-    // 追加ボタン2のハンドラ
-    @IBAction func addTextSection2(_ sender: Any) {
-        // セクション2にテキストを追加
-        addTextToSection(itemArray: &itemsList[1], section: 1)
-    }
-    // 追加ボタンの共通の処理を行うメソッド
-    func addTextToSection(itemArray: inout [String], section: Int) {
+    
+    // 追加ボタン1と追加ボタン2の共通の処理を行うメソッド
+    func addItem<T: Object>(_ item: T, text: String) {
         // テキストフィールドが空文字の場合は何もしない
         guard let text = textBox.text, !text.isEmpty else {
             return
         }
-        
-        // テキストフィールドの値を配列に追加
-        itemArray.append(text)
-        
-        // テーブルに新しい行を挿入
-        let indexPath = IndexPath(row: itemArray.count - 1, section: section)
-
-        // メインスレッドでUIの更新を行う
-        DispatchQueue.main.async {
-            self.myTableView.insertRows(at: [indexPath], with: .automatic)
-            // テキストフィールドをクリア
-            self.textBox.text = ""
+        if let realm = try? Realm() {
+            // フルーツのデータ
+            try! realm.write {
+                if let fruit = item as? Fruit {
+                    fruit.name = text
+                } else if let prefecture = item as? Prefectures { // 都道府県のデータ
+                    prefecture.place = text
+                }
+                realm.add(item)
+            }
         }
+        textBox.text = ""
+        myTableView.reloadData()
+    }
+
+    // 追加ボタン1のハンドラ
+    @IBAction func addText(_ sender: Any) {
+        let fruit = Fruit()
+        addItem(fruit, text: textBox.text!)
+    }
+    // 追加ボタン2のハンドラ
+    @IBAction func addTextSection2(_ sender: Any) {
+        let prefecture = Prefectures()
+        addItem(prefecture, text: textBox.text!)
     }
 
     // 編集ボタンを押下時のハンドラ
