@@ -284,31 +284,23 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             
             // realmのデータ
             let fruitData = realm.objects(Fruit.self)
-            
-            // テーブルビューから削除
-//            for (section, indices) in deletetAllItems.enumerated() {
-//                // 削除するアイテムのインデックスを降順にソートしてから削除
-//                let sortedIndices = indices.sorted(by: >)
-//                
-//                var indexPathsToDelete: [IndexPath] = []
-//                
-//                for index in sortedIndices {
-//                    itemsList[section].remove(at: index)
-//                    indexPathsToDelete.append(IndexPath(row: index, section: section))
-//                }
-//                // テーブルビューセルから削除
-//                myTableView.deleteRows(at: indexPathsToDelete, with: .automatic)
-//                deletetAllItems = [[],[]]
-//            }
-           
+            let prefecture = realm.objects(Prefectures.self)
+    
             // 選択されたインデックスをソート
             for (section, indices) in deletetAllItems.enumerated() {
                 let sortedIndices = indices.sorted(by: >)
-                
+                // セクションの番号ごとに削除するデータを決定する
                 for index in sortedIndices {
-                    try! realm.write {
-                        // realmから削除
-                        realm.delete(fruitData[index])
+                    if section == 0 {
+                        try! realm.write {
+                            // realmから削除
+                            realm.delete(fruitData[index])
+                        }
+                    } else {
+                        try! realm.write {
+                            // realmから削除
+                            realm.delete(prefecture[index])
+                        }
                     }
                 }
             }
