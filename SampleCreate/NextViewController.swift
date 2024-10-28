@@ -227,16 +227,19 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         guard let indexPath = myTableView.indexPath(for: myCell) else {
             return
         }
-//        let section =  indexPath.first ?? 0
-//        itemsList[section].remove(at: indexPath.row)
-//        myTableView.deleteRows(at: [indexPath], with: .automatic)
         let realm = try! Realm()
-        let fruit = realm.objects(Fruit.self)[indexPath.row]
-        // 削除
-        try! realm.write {
-            realm.delete(fruit)
+        let fruit = realm.objects(Fruit.self)[indexPath.row] // フルーツのデータ
+        let prefecture = realm.objects(Prefectures.self)[indexPath.row] // 都道府県のデータ
+        let section = indexPath.section
+        if section == 0 {
+            try! realm.write {
+                realm.delete(fruit)
+            }
+        } else {
+            try! realm.write {
+                realm.delete(prefecture)
+            }
         }
-        
         myTableView.reloadData()
     }
     
