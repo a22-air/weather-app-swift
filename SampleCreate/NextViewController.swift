@@ -285,21 +285,39 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             // 削除ボタンの時の処理
             editButton.setTitle("編集", for: .normal)
             myTableView.isEditing = false
+            
+            // realmのデータ
+            let fruitData = realm.objects(Fruit.self)
+            
             // テーブルビューから削除
+//            for (section, indices) in deletetAllItems.enumerated() {
+//                // 削除するアイテムのインデックスを降順にソートしてから削除
+//                let sortedIndices = indices.sorted(by: >)
+//                
+//                var indexPathsToDelete: [IndexPath] = []
+//                
+//                for index in sortedIndices {
+//                    itemsList[section].remove(at: index)
+//                    indexPathsToDelete.append(IndexPath(row: index, section: section))
+//                }
+//                // テーブルビューセルから削除
+//                myTableView.deleteRows(at: indexPathsToDelete, with: .automatic)
+//                deletetAllItems = [[],[]]
+//            }
+           
+            // 選択されたインデックスをソート
             for (section, indices) in deletetAllItems.enumerated() {
-                // 削除するアイテムのインデックスを降順にソートしてから削除
                 let sortedIndices = indices.sorted(by: >)
                 
-                var indexPathsToDelete: [IndexPath] = []
-                
                 for index in sortedIndices {
-                    itemsList[section].remove(at: index)
-                    indexPathsToDelete.append(IndexPath(row: index, section: section))
+                    try! realm.write {
+                        // realmから削除
+                        realm.delete(fruitData[index])
+                    }
                 }
-                // テーブルビューセルから削除
-                myTableView.deleteRows(at: indexPathsToDelete, with: .automatic)
-                deletetAllItems = [[],[]]
             }
+            deletetAllItems = [[],[]]
+            myTableView.reloadData()
         } else {
             // 編集ボタンの時の処理
             editButton.setTitle("削除", for: .normal)

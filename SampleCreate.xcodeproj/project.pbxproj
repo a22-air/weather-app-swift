@@ -21,6 +21,7 @@
 		3DE034FF2CC0CFD800E93BA4 /* FruitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE034FE2CC0CFD800E93BA4 /* FruitViewController.swift */; };
 		3DE035082CC21A0B00E93BA4 /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE035062CC21A0B00E93BA4 /* WeatherTableViewCell.swift */; };
 		3DE035092CC21A0B00E93BA4 /* WeatherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DE035072CC21A0B00E93BA4 /* WeatherTableViewCell.xib */; };
+		3DE0354D2CC6227D00E93BA4 /* Fruit-swif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE0354C2CC6227D00E93BA4 /* Fruit-swif.swift */; };
 		E4078CE22E6DF5CC422E54D7 /* Pods_SampleCreate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80ECCF29B24964C2C58A6BF5 /* Pods_SampleCreate.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		3DE034FE2CC0CFD800E93BA4 /* FruitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitViewController.swift; sourceTree = "<group>"; };
 		3DE035062CC21A0B00E93BA4 /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
 		3DE035072CC21A0B00E93BA4 /* WeatherTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherTableViewCell.xib; sourceTree = "<group>"; };
+		3DE0354C2CC6227D00E93BA4 /* Fruit-swif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fruit-swif.swift"; sourceTree = "<group>"; };
 		80ECCF29B24964C2C58A6BF5 /* Pods_SampleCreate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SampleCreate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF9B8DBCD0E3004C28968C9C /* Pods-SampleCreate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleCreate.debug.xcconfig"; path = "Target Support Files/Pods-SampleCreate/Pods-SampleCreate.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,6 +105,7 @@
 				3D8597B52C92768E005BACE9 /* AppDelegate.swift */,
 				3D8597B72C92768E005BACE9 /* SceneDelegate.swift */,
 				3D8597B92C92768E005BACE9 /* ViewController.swift */,
+				3DE0354C2CC6227D00E93BA4 /* Fruit-swif.swift */,
 				3D8597C92C92A9A9005BACE9 /* NextViewController.swift */,
 				3D045A742CAA329F0099413C /* MainTableViewCell.swift */,
 				3D045A752CAA329F0099413C /* MainTableViewCell.xib */,
@@ -253,6 +256,7 @@
 				3D8597BA2C92768E005BACE9 /* ViewController.swift in Sources */,
 				3D8597CA2C92A9A9005BACE9 /* NextViewController.swift in Sources */,
 				3D3113322CAE6A900025A5B3 /* WeatherDetailsViewController.swift in Sources */,
+				3DE0354D2CC6227D00E93BA4 /* Fruit-swif.swift in Sources */,
 				3D8597B62C92768E005BACE9 /* AppDelegate.swift in Sources */,
 				3DE034FF2CC0CFD800E93BA4 /* FruitViewController.swift in Sources */,
 				3DE035082CC21A0B00E93BA4 /* WeatherTableViewCell.swift in Sources */,
