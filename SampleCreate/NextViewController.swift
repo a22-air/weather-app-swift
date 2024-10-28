@@ -108,24 +108,21 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! MainTableViewCell
             // テキストフィールドのテキストをテーブルにセット
-            if indexPath.section == 0 {
-//                cell.label.text = itemsList[0][indexPath.row]  // セクション1のデータを設定
-                // realmのFruitを呼び出し
-                let fruitData = realm.objects(Fruit.self)
-                // realmのデータをセット
-                cell.textLabel!.text = "\(fruitData[indexPath.row].name)"
-            } else if indexPath.section == 1 {
-                cell.label.text = itemsList[1][indexPath.row]  // セクション2のデータを設定
-            }
+            // realmのFruitを呼び出し
+            let fruitData = realm.objects(Fruit.self)
+            // realmのデータをセット
+            cell.textLabel!.text = "\(fruitData[indexPath.row].name)"
             cell.indexNum = indexPath.row // カスタムセルのindex
             cell.imgDelegate = self
             return cell
-            
         } else { // セクション2のカスタムセルの設定
             let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherCell", for: indexPath) as! WeatherTableViewCell
-//            cell.label.text = itemsList[1][indexPath.row]
+            // realmのPrefecturesを呼び出し
+            let prefecture = realm.objects(Prefectures.self)
             cell.imgDelegate = self
-            cell.indexNum = indexPath.row
+            cell.indexNum = indexPath.row // カスタムセルのindex
+            // realmのデータをセット
+            cell.textLabel!.text = "\(prefecture[indexPath.row].place)"
             return cell
         }
     }
