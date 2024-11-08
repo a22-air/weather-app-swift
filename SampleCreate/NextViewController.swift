@@ -37,6 +37,21 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        
+        let fruitData = realm.objects(Fruit.self) // フルーツのデータ
+        let prefecture = realm.objects(Prefectures.self)
+        
+        for i in 0 ..< itemsList.count {
+            let count = (i == 0) ? fruitData.count : prefecture.count
+            for j in 0 ..< count {
+                if i == 0 {
+                    itemsList[i].append(fruitData[j].name)
+                } else {
+                    itemsList[i].append(prefecture[j].place)
+                }
+                print("itemList:",itemsList)
+            }
+        }
         // 使用するカスタムセルの登録
         myTableView.register(UINib(nibName:"MainTableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
         myTableView.register(UINib(nibName: "SubTableViewCell", bundle: nil), forCellReuseIdentifier: "SubCell")
