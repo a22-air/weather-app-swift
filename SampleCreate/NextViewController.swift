@@ -223,13 +223,15 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         if section == 0 {
             try! realm.write {
                 realm.delete(fruit)
+                itemsList[section].remove(at: indexPath.row)
             }
         } else {
             try! realm.write {
                 realm.delete(prefecture)
+                itemsList[section].remove(at: indexPath.row)
             }
         }
-        myTableView.reloadData()
+        myTableView.deleteRows(at: [indexPath], with: .automatic)
     }
     
     // 追加ボタン1と追加ボタン2の共通の処理を行うメソッド
