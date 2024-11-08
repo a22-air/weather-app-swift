@@ -17,7 +17,7 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         case pink = "ピンク"
     }
 
-    var itemsList: [[String]] = [["いちご","オレンジ","もも"],["兵庫","東京","北海道","沖縄"]]
+    var itemsList: [[String]] = [[],[]]
     var deletetAllItems:[[Int]] = [[],[]]
     let addresList: [String] = ["大阪","京都","奈良","神奈川"]
     var sendIndexPath :IndexPath = []
