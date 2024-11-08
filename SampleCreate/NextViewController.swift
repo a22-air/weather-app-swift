@@ -233,7 +233,7 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     
     // 追加ボタン1と追加ボタン2の共通の処理を行うメソッド
-    func addItem<T: Object>(_ item: T, text: String) {
+    func addItem<T: Object>(_ item: T, text: String, section:Int) {
         // テキストフィールドが空文字の場合は何もしない
         guard let text = textBox.text, !text.isEmpty else {
             return
@@ -243,25 +243,34 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             try! realm.write {
                 if let fruit = item as? Fruit {
                     fruit.name = text
+                    itemsList[section].append(textBox.text!)
                 } else if let prefecture = item as? Prefectures { // 都道府県のデータ
                     prefecture.place = text
+                    itemsList[section].append(textBox.text!)
                 }
                 realm.add(item)
             }
         }
+        // アニメーションをつけてテーブルビューを追加する
+        let indexPath = IndexPath(row: itemsList[section].count - 1, section: section)
+        
+        myTableView.beginUpdates()
+        myTableView.insertRows(at: [indexPath], with: .automatic)
+        myTableView.endUpdates()
+           
         textBox.text = ""
-        myTableView.reloadData()
     }
 
     // 追加ボタン1のハンドラ
     @IBAction func addText(_ sender: Any) {
         let fruit = Fruit()
-        addItem(fruit, text: textBox.text!)
+        addItem(fruit, text: textBox.text!, section: 0)
     }
+    
     // 追加ボタン2のハンドラ
     @IBAction func addTextSection2(_ sender: Any) {
         let prefecture = Prefectures()
-        addItem(prefecture, text: textBox.text!)
+        addItem(prefecture, text: textBox.text!, section: 1)
     }
 
     // 編集ボタンを押下時のハンドラ
