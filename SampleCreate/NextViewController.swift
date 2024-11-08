@@ -82,21 +82,18 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // realmのデータを呼び出し
-        let fruitData = realm.objects(Fruit.self) // フルーツのデータ
-        let prefecture = realm.objects(Prefectures.self) // 都道府県のデータ
         // セクションごとにRealmを呼び出す
         if section == 0 { // フルーツのデータ
-            if fruitData.count == 0 {
+            if itemsList[section].count == 0 {
                 return 0 // データが無ければ0を返す
             } else {
-                return fruitData.count
+                return itemsList[section].count
             }
         } else { // 都道府県のデータ
-            if prefecture.count == 0 {
+            if itemsList[section].count == 0 {
                 return 0 // データが無ければ0を返す
             } else {
-                return prefecture.count
+                return itemsList[section].count
             }
         }
     }
