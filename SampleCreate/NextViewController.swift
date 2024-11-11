@@ -280,8 +280,9 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         if(myTableView.isEditing == true){
             // 削除ボタンの時の処理
             editButton.setTitle("編集", for: .normal)
-            myTableView.isEditing = false
-            
+            UIView.animate(withDuration: 0.3) {
+                self.myTableView.isEditing = false
+            }
             // realmのデータ
             let fruitData = realm.objects(Fruit.self)
             let prefecture = realm.objects(Prefectures.self)
@@ -313,7 +314,9 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             // 編集ボタンの時の処理
             editButton.setTitle("削除", for: .normal)
             myTableView.allowsMultipleSelectionDuringEditing = true// 複数選択モードにする処理
-            myTableView.isEditing = true
+            UIView.animate(withDuration: 0.3) {
+                        self.myTableView.isEditing = true
+            }
         }
     }
     
