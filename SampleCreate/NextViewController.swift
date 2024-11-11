@@ -295,17 +295,20 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                         try! realm.write {
                             // realmから削除
                             realm.delete(fruitData[index])
+                            itemsList[section].remove(at: index)
                         }
                     } else {
                         try! realm.write {
                             // realmから削除
                             realm.delete(prefecture[index])
+                            itemsList[section].remove(at: index)
                         }
                     }
+                    let indexPath = IndexPath(row: index, section: section)
+                    myTableView.deleteRows(at: [indexPath], with: .automatic)
                 }
             }
             deletetAllItems = [[],[]]
-            myTableView.reloadData()
         } else {
             // 編集ボタンの時の処理
             editButton.setTitle("削除", for: .normal)
