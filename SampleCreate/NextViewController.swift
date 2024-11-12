@@ -104,14 +104,15 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     {
         // セクション1のカスタムセルの設定
         if indexPath.section == 0 {
-            // 入力文字数が14文字以上の場合
-            if isMaxValue {
+            let items = itemsList[indexPath.section]
+            // itemsListが14文字以上か判断
+            if items[indexPath.row].count >= 14 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! TextViewCell
                 cell.textLabel!.text = itemsList[indexPath.section][indexPath.row]
                 cell.indexNum = indexPath.row // カスタムセルのindex
                 //            cell.imgDelegate = self
                 return cell
-            } else { // 入力文字数が13文字以下の場合
+            } else { // 13文字以下の場合
                 let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! MainTableViewCell
                 cell.textLabel!.text = itemsList[indexPath.section][indexPath.row]
                 cell.indexNum = indexPath.row // カスタムセルのindex
@@ -250,10 +251,6 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         // テキストフィールドが空文字の場合は何もしない
         guard let text = textBox.text, !text.isEmpty else {
             return
-        }
-        // セルのデザインを入力文字数で変更するためにフラグの切り替えを行う
-        if text.count >= 14 {
-            isMaxValue = true
         }
         if let realm = try? Realm() {
             // フルーツのデータ
