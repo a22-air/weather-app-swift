@@ -21,6 +21,7 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     var deletetAllItems:[[Int]] = [[],[]]
     let addresList: [String] = ["大阪","京都","奈良","神奈川"]
     var sendIndexPath :IndexPath = []
+    var isMaxValue: Bool = false
     
     @IBOutlet weak var myTableView: UITableView! // テーブルビュー
     @IBOutlet weak var textBox: UITextField! // テキストフィールド
@@ -36,7 +37,6 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
         
         let fruitData = realm.objects(Fruit.self) // フルーツのデータ
         let prefecture = realm.objects(Prefectures.self)
@@ -56,6 +56,7 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         myTableView.register(UINib(nibName:"MainTableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
         myTableView.register(UINib(nibName: "SubTableViewCell", bundle: nil), forCellReuseIdentifier: "SubCell")
         myTableView.register(UINib(nibName: "WeatherTableViewCell", bundle: nil), forCellReuseIdentifier: "WeatherCell")
+        myTableView.register(UINib(nibName: "TextViewCell", bundle: nil), forCellReuseIdentifier: "TextCell")
         // テキストフィールドのレイアウトの指定
         textBox.layer.borderColor = UIColor.gray.cgColor
         textBox.layer.borderWidth = 1.0
@@ -98,15 +99,25 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
     }
 
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         // セクション1のカスタムセルの設定
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! MainTableViewCell
-            cell.textLabel!.text = itemsList[indexPath.section][indexPath.row]
-            cell.indexNum = indexPath.row // カスタムセルのindex
-            cell.imgDelegate = self
-            return cell
+            // 入力文字数が14文字以上の場合
+            if isMaxValue {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! TextViewCell
+                cell.textLabel!.text = itemsList[indexPath.section][indexPath.row]
+                cell.indexNum = indexPath.row // カスタムセルのindex
+                //            cell.imgDelegate = self
+                return cell
+            } else { // 入力文字数が13文字以下の場合
+                let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! MainTableViewCell
+                cell.textLabel!.text = itemsList[indexPath.section][indexPath.row]
+                cell.indexNum = indexPath.row // カスタムセルのindex
+                cell.imgDelegate = self
+                return cell
+            }
         } else { // セクション2のカスタムセルの設定
             let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherCell", for: indexPath) as! WeatherTableViewCell
             cell.textLabel!.text = itemsList[indexPath.section][indexPath.row]
@@ -239,6 +250,10 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         // テキストフィールドが空文字の場合は何もしない
         guard let text = textBox.text, !text.isEmpty else {
             return
+        }
+        // セルのデザインを入力文字数で変更するためにフラグの切り替えを行う
+        if text.count >= 14 {
+            isMaxValue = true
         }
         if let realm = try? Realm() {
             // フルーツのデータ
