@@ -223,29 +223,73 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
     
     
-    // セルを削除する関数
-    func removeCell(myCell: UITableViewCell){
+//    // セルを削除する関数
+//    func removeCell(myCell: UITableViewCell){
+//        print("myCell",myCell)
+//        guard let indexPath = myTableView.indexPath(for: myCell) else {
+//            return
+//        }
+////        print("indexPath:",indexPath)
+//        let realm = try! Realm()
+//        
+//        let fruit = realm.objects(Fruit.self)[indexPath.row] // フルーツのデータ
+//        let prefecture = realm.objects(Prefectures.self)[indexPath.row] // 都道府県のデータ
+//        let section = indexPath.section
+//        print("section",section)
+//        if section == 0 {
+//            
+//            try! realm.write {
+//                realm.delete(fruit)
+//                itemsList[section].remove(at: indexPath.row)
+//            }
+//        } else {
+//            try! realm.write {
+//                realm.delete(prefecture)
+//                itemsList[section].remove(at: indexPath.row)
+//            }
+//        }
+//        myTableView.deleteRows(at: [indexPath], with: .automatic)
+//    }
+    func removeCell(myCell: UITableViewCell) {
         guard let indexPath = myTableView.indexPath(for: myCell) else {
             return
         }
+
         let realm = try! Realm()
-        let fruit = realm.objects(Fruit.self)[indexPath.row] // フルーツのデータ
-        let prefecture = realm.objects(Prefectures.self)[indexPath.row] // 都道府県のデータ
         let section = indexPath.section
-        if section == 0 {
-            try! realm.write {
-                realm.delete(fruit)
-                itemsList[section].remove(at: indexPath.row)
-            }
-        } else {
-            try! realm.write {
-                realm.delete(prefecture)
-                itemsList[section].remove(at: indexPath.row)
-            }
+        
+        let fruitResults = realm.objects(Fruit.self)
+        let prefectureResults = realm.objects(Prefectures.self)
+
+        guard indexPath.section < itemsList.count else {
+            print("セクションの範囲外です")
+            return
         }
-        myTableView.deleteRows(at: [indexPath], with: .automatic)
+
+        do {
+            try realm.write {
+                if section == 0 {
+                    if indexPath.row < fruitResults.count {
+                        realm.delete(fruitResults[indexPath.row])
+                        itemsList[section].remove(at: indexPath.row)
+                    } else {
+                        print("Fruitデータが範囲外です")
+                    }
+                } else {
+                    if indexPath.row < prefectureResults.count {
+                        realm.delete(prefectureResults[indexPath.row])
+                        itemsList[section].remove(at: indexPath.row)
+                    } else {
+                        print("Prefecturesデータが範囲外です")
+                    }
+                }
+            }
+            myTableView.deleteRows(at: [indexPath], with: .automatic)
+        } catch let error {
+            print("Realmトランザクションでエラーが発生しました: \(error)")
+        }
     }
-    
+
     // 追加ボタン1と追加ボタン2の共通の処理を行うメソッド
     func addItem<T: Object>(_ item: T, text: String, section:Int) {
         // テキストフィールドが空文字の場合は何もしない
