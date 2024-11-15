@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,Section1RemoveCell,UIPickerViewDelegate,UIPickerViewDataSource,Section2RemoveCell {
+class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,Section1RemoveCell,UIPickerViewDelegate,UIPickerViewDataSource,Section2RemoveCell,LongCharactersRemoveCell {
     
     enum useColorTypes:String, CaseIterable {
         case red = "赤"
@@ -56,7 +56,7 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         myTableView.register(UINib(nibName:"MainTableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
         myTableView.register(UINib(nibName: "SubTableViewCell", bundle: nil), forCellReuseIdentifier: "SubCell")
         myTableView.register(UINib(nibName: "WeatherTableViewCell", bundle: nil), forCellReuseIdentifier: "WeatherCell")
-        myTableView.register(UINib(nibName: "TextViewCell", bundle: nil), forCellReuseIdentifier: "TextCell")
+        myTableView.register(UINib(nibName: "LongCharactersTableViewCell", bundle: nil), forCellReuseIdentifier: "LongCharactersCell")
         // テキストフィールドのレイアウトの指定
         textBox.layer.borderColor = UIColor.gray.cgColor
         textBox.layer.borderWidth = 1.0
@@ -107,10 +107,10 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             let items = itemsList[indexPath.section]
             // itemsListが14文字以上か判断
             if items[indexPath.row].count >= 14 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! TextViewCell
-                cell.textLabel!.text = itemsList[indexPath.section][indexPath.row]
+                let cell = tableView.dequeueReusableCell(withIdentifier: "LongCharactersCell", for: indexPath) as! LongCharactersTableViewCell
+                cell.textView.text = itemsList[indexPath.section][indexPath.row]
                 cell.indexNum = indexPath.row // カスタムセルのindex
-                //            cell.imgDelegate = self
+                cell.imgDelegate = self
                 return cell
             } else { // 13文字以下の場合
                 let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! MainTableViewCell
