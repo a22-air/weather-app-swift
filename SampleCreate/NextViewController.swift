@@ -234,35 +234,7 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         return 34 // フッターの高さを指定
     }
 
-    
-    
-//    // セルを削除する関数
-//    func removeCell(myCell: UITableViewCell){
-//        print("myCell",myCell)
-//        guard let indexPath = myTableView.indexPath(for: myCell) else {
-//            return
-//        }
-////        print("indexPath:",indexPath)
-//        let realm = try! Realm()
-//        
-//        let fruit = realm.objects(Fruit.self)[indexPath.row] // フルーツのデータ
-//        let prefecture = realm.objects(Prefectures.self)[indexPath.row] // 都道府県のデータ
-//        let section = indexPath.section
-//        print("section",section)
-//        if section == 0 {
-//            
-//            try! realm.write {
-//                realm.delete(fruit)
-//                itemsList[section].remove(at: indexPath.row)
-//            }
-//        } else {
-//            try! realm.write {
-//                realm.delete(prefecture)
-//                itemsList[section].remove(at: indexPath.row)
-//            }
-//        }
-//        myTableView.deleteRows(at: [indexPath], with: .automatic)
-//    }
+    // セルを削除する関数
     func removeCell(myCell: UITableViewCell) {
         guard let indexPath = myTableView.indexPath(for: myCell) else {
             return
