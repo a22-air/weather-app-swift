@@ -18,6 +18,7 @@
 		3D8597BF2C927690005BACE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D8597BE2C927690005BACE9 /* Assets.xcassets */; };
 		3D8597C22C927690005BACE9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 3D8597C12C927690005BACE9 /* Base */; };
 		3D8597CA2C92A9A9005BACE9 /* NextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8597C92C92A9A9005BACE9 /* NextViewController.swift */; };
+		3D9602592CEEFD8E00D81AD0 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9602582CEEFD8E00D81AD0 /* PickerViewController.swift */; };
 		3DE034FF2CC0CFD800E93BA4 /* FruitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE034FE2CC0CFD800E93BA4 /* FruitViewController.swift */; };
 		3DE035082CC21A0B00E93BA4 /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE035062CC21A0B00E93BA4 /* WeatherTableViewCell.swift */; };
 		3DE035092CC21A0B00E93BA4 /* WeatherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DE035072CC21A0B00E93BA4 /* WeatherTableViewCell.xib */; };
@@ -57,6 +58,7 @@
 		3D8597C12C927690005BACE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D8597C32C927690005BACE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D8597C92C92A9A9005BACE9 /* NextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextViewController.swift; sourceTree = "<group>"; };
+		3D9602582CEEFD8E00D81AD0 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		3DE034FE2CC0CFD800E93BA4 /* FruitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitViewController.swift; sourceTree = "<group>"; };
 		3DE035062CC21A0B00E93BA4 /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
 		3DE035072CC21A0B00E93BA4 /* WeatherTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherTableViewCell.xib; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				3DFBEF172CE4496E0004A531 /* TestPageViewController.swift */,
 				3DFBEF1D2CE477770004A531 /* LongCharactersTableViewCell.swift */,
 				3DFBEF1E2CE477770004A531 /* LongCharactersTableViewCell.xib */,
+				3D9602582CEEFD8E00D81AD0 /* PickerViewController.swift */,
 			);
 			path = SampleCreate;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				3DE035082CC21A0B00E93BA4 /* WeatherTableViewCell.swift in Sources */,
 				3D8597B82C92768E005BACE9 /* SceneDelegate.swift in Sources */,
 				3DFBEF1F2CE477770004A531 /* LongCharactersTableViewCell.swift in Sources */,
+				3D9602592CEEFD8E00D81AD0 /* PickerViewController.swift in Sources */,
 				3D045A762CAA329F0099413C /* MainTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

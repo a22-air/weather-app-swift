@@ -17,25 +17,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="A画面" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OtA-f6-Jmd">
-                                <rect key="frame" x="70" y="80" width="180" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A画面" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OtA-f6-Jmd">
+                                <rect key="frame" x="50" y="70" width="220" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="mj8-xe-s4I"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qub-kU-ciM">
-                                <rect key="frame" x="50" y="224" width="220" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qub-kU-ciM">
+                                <rect key="frame" x="50" y="220" width="220" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="eg4-WZ-Fvm"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="画面Bに切り替え"/>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="show" id="aCq-bo-bdc"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1HU-9f-RX9">
-                                <rect key="frame" x="50" y="284" width="220" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1HU-9f-RX9">
+                                <rect key="frame" x="50" y="280" width="220" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="pB1-S7-UdW"/>
+                                </constraints>
                                 <color key="tintColor" systemColor="systemBlueColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="画面Cに切り替え"/>
@@ -43,11 +49,13 @@
                                     <segue destination="bXO-P3-VDY" kind="show" animates="NO" id="iHx-yF-iej"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ti-Qn-zag">
-                                <rect key="frame" x="123" y="400" width="75" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ti-Qn-zag">
+                                <rect key="frame" x="50" y="340" width="220" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="X5B-pX-0ah"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="画面Eに切り替え"/>
                                 <connections>
                                     <segue destination="vl5-9a-Rjg" kind="show" id="MbX-Ra-Zx1"/>
                                 </connections>
@@ -55,6 +63,20 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PQ2-Xx-zLW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="PQ2-Xx-zLW" firstAttribute="trailing" secondItem="5Ti-Qn-zag" secondAttribute="trailing" constant="50" id="8LM-n1-t0k"/>
+                            <constraint firstItem="Qub-kU-ciM" firstAttribute="leading" secondItem="PQ2-Xx-zLW" secondAttribute="leading" constant="50" id="BCs-gP-GiE"/>
+                            <constraint firstItem="Qub-kU-ciM" firstAttribute="top" secondItem="OtA-f6-Jmd" secondAttribute="bottom" constant="100" id="CLH-Zo-m0w"/>
+                            <constraint firstItem="5Ti-Qn-zag" firstAttribute="top" secondItem="1HU-9f-RX9" secondAttribute="bottom" constant="20" id="Dq1-VJ-BUY"/>
+                            <constraint firstItem="PQ2-Xx-zLW" firstAttribute="trailing" secondItem="Qub-kU-ciM" secondAttribute="trailing" constant="50" id="HqE-rG-3Rs"/>
+                            <constraint firstItem="OtA-f6-Jmd" firstAttribute="top" secondItem="PQ2-Xx-zLW" secondAttribute="top" constant="70" id="SZd-e8-dUT"/>
+                            <constraint firstItem="OtA-f6-Jmd" firstAttribute="leading" secondItem="PQ2-Xx-zLW" secondAttribute="leading" constant="50" id="bsm-r4-R4b"/>
+                            <constraint firstItem="5Ti-Qn-zag" firstAttribute="leading" secondItem="PQ2-Xx-zLW" secondAttribute="leading" constant="50" id="mlq-Gq-u3f"/>
+                            <constraint firstItem="PQ2-Xx-zLW" firstAttribute="trailing" secondItem="1HU-9f-RX9" secondAttribute="trailing" constant="50" id="oGH-4F-xFn"/>
+                            <constraint firstItem="1HU-9f-RX9" firstAttribute="leading" secondItem="PQ2-Xx-zLW" secondAttribute="leading" constant="50" id="rVr-un-KRg"/>
+                            <constraint firstItem="PQ2-Xx-zLW" firstAttribute="trailing" secondItem="OtA-f6-Jmd" secondAttribute="trailing" constant="50" id="tgU-O0-2AO"/>
+                            <constraint firstItem="1HU-9f-RX9" firstAttribute="top" secondItem="Qub-kU-ciM" secondAttribute="bottom" constant="20" id="tsG-uu-r50"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xXP-4D-8Ox"/>
                 </viewController>
@@ -62,10 +84,10 @@
             </objects>
             <point key="canvasLocation" x="-1257.2519083969464" y="0.70422535211267612"/>
         </scene>
-        <!--Test Page View Controller-->
+        <!--Picker View Controller-->
         <scene sceneID="j8v-0x-fRs">
             <objects>
-                <viewController id="vl5-9a-Rjg" customClass="TestPageViewController" customModule="SampleCreate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vl5-9a-Rjg" customClass="PickerViewController" customModule="SampleCreate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="19E-pm-eRS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -75,7 +97,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="photo.on.rectangle" catalog="system" title="+"/>
                                 <connections>
-                                    <action selector="openPictures:" destination="vl5-9a-Rjg" eventType="touchUpInside" id="3Jo-fL-dZv"/>
+                                    <action selector="openPictures:" destination="vl5-9a-Rjg" eventType="touchUpInside" id="Yyx-v4-D3a"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pZb-H0-mN7">
@@ -98,7 +120,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Klg-Ea-uS3"/>
                     <connections>
-                        <outlet property="img" destination="pZb-H0-mN7" id="1hF-hC-isD"/>
+                        <outlet property="img" destination="pZb-H0-mN7" id="hWp-lj-AT3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hD1-H4-vxV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
