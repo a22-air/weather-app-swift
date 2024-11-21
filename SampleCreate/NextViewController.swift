@@ -38,6 +38,9 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        // ひらがな入力ができないバグがあったのでキーボードタイプをデフォルトで指定
+        textBox.keyboardType = .default
+        
         let fruitData = realm.objects(Fruit.self) // フルーツのデータ
         let prefecture = realm.objects(Prefectures.self)
         
