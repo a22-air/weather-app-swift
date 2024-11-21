@@ -42,14 +42,29 @@ class TestPageViewController: UIViewController, PHPickerViewControllerDelegate{
         guard let result = results.first else { return }
         // 結果から最初のItemProviderを取得
         let itemProvider = result.itemProvider
-        //オプショナルバインディングで取得したItemProviderのnilチェックとロード可能かチェック
+        
+        // 正常系のクロージャー
+        let successHandler: (UIImage) -> Void = { [weak self] image in
+            DispatchQueue.main.async {
+                self?.img.image = image
+            }
+        }
+        
+        // 異常系のクロージャー
+        let errowHandler: (Error?) -> Void = { error in
+            DispatchQueue.main.async {
+                print("画像の読み込みでエラーが発生しました:",String(describing: error))
+            }
+        }
+        
+        // オプショナルバインディングで取得したItemProviderのnilチェックとロード可能かチェック
         if itemProvider.canLoadObject(ofClass: UIImage.self) {
             // ItemProviderから画像を呼び出す
-            itemProvider.loadObject(ofClass: UIImage.self) { [weak self] (image, error) in
-                DispatchQueue.main.async {
-                    if let image = image as? UIImage {
-                        self?.img.image = image
-                    }
+            itemProvider.loadObject(ofClass: UIImage.self) { (image,error) in
+                if let image = image as? UIImage {
+                    successHandler(image)
+                } else {
+                    errowHandler(error)
                 }
             }
         }

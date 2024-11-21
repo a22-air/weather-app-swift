@@ -43,6 +43,15 @@
                                     <segue destination="bXO-P3-VDY" kind="show" animates="NO" id="iHx-yF-iej"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ti-Qn-zag">
+                                <rect key="frame" x="123" y="400" width="75" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <connections>
+                                    <segue destination="vl5-9a-Rjg" kind="show" id="MbX-Ra-Zx1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PQ2-Xx-zLW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -52,6 +61,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iGk-Mf-tLR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1257.2519083969464" y="0.70422535211267612"/>
+        </scene>
+        <!--Test Page View Controller-->
+        <scene sceneID="j8v-0x-fRs">
+            <objects>
+                <viewController id="vl5-9a-Rjg" customClass="TestPageViewController" customModule="SampleCreate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="19E-pm-eRS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dVd-Qz-BtF">
+                                <rect key="frame" x="269" y="20" width="51" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="photo.on.rectangle" catalog="system" title="+"/>
+                                <connections>
+                                    <action selector="openPictures:" destination="vl5-9a-Rjg" eventType="touchUpInside" id="3Jo-fL-dZv"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pZb-H0-mN7">
+                                <rect key="frame" x="10" y="75" width="300" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="4T5-gG-q0S"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="G5y-oY-hV9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dVd-Qz-BtF" firstAttribute="top" secondItem="G5y-oY-hV9" secondAttribute="top" constant="20" id="Umb-eu-y14"/>
+                            <constraint firstItem="pZb-H0-mN7" firstAttribute="leading" secondItem="G5y-oY-hV9" secondAttribute="leading" constant="10" id="X6V-e6-nbL"/>
+                            <constraint firstItem="dVd-Qz-BtF" firstAttribute="leading" secondItem="G5y-oY-hV9" secondAttribute="leading" constant="269" id="aIZ-vh-8ES"/>
+                            <constraint firstItem="G5y-oY-hV9" firstAttribute="trailing" secondItem="dVd-Qz-BtF" secondAttribute="trailing" id="fHq-6b-N5O"/>
+                            <constraint firstItem="pZb-H0-mN7" firstAttribute="top" secondItem="dVd-Qz-BtF" secondAttribute="bottom" constant="20" id="psT-NJ-a5x"/>
+                            <constraint firstItem="G5y-oY-hV9" firstAttribute="trailing" secondItem="pZb-H0-mN7" secondAttribute="trailing" constant="10" id="sUz-VV-Vx1"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Klg-Ea-uS3"/>
+                    <connections>
+                        <outlet property="img" destination="pZb-H0-mN7" id="1hF-hC-isD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hD1-H4-vxV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2062.5" y="10.56338028169014"/>
         </scene>
         <!--Next View Controller-->
         <scene sceneID="Nug-FG-rJM">
@@ -192,7 +244,7 @@
                                 <rect key="frame" x="0.0" y="210" width="320" height="312"/>
                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                                 <pickerView key="tableFooterView" contentMode="scaleToFill" id="3cf-Lq-Lud">
-                                    <rect key="frame" x="0.0" y="122" width="320" height="178"/>
+                                    <rect key="frame" x="0.0" y="121.5" width="320" height="178"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 </pickerView>
                                 <prototypes>
@@ -212,6 +264,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -540,11 +593,12 @@
         <segue reference="iHx-yF-iej"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="photo.on.rectangle" catalog="system" width="128" height="98"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -553,19 +607,19 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemMintColor">
-            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.78039215689999997" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tableCellBlueTextColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
