@@ -42,7 +42,7 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         textBox.keyboardType = .default
         
         let fruitData = realm.objects(Fruit.self) // フルーツのデータ
-        let prefecture = realm.objects(Prefectures.self)
+        let prefecture = realm.objects(Prefectures.self) // 都道府県のデータ
         
         for i in 0 ..< itemsList.count {
             let count = (i == 0) ? fruitData.count : prefecture.count
