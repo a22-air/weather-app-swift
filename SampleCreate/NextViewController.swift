@@ -177,6 +177,16 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             }
         }
     }
+    
+    // テーブルの選択ボタンが解除された時の処理
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        // 削除用配列から削除する
+        if let deleteIndex = deletetAllItems[indexPath.section].firstIndex(of: indexPath.row){
+            deletetAllItems[indexPath.section].remove(at: deleteIndex)
+        } else {
+            print("削除失敗")
+        }
+    }
 
     // セクション間のヘッダー設定
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
