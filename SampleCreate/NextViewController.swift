@@ -233,6 +233,18 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 34 // フッターの高さを指定
     }
+    
+    // テーブルセルの移動モードの指定
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+      return true
+    }
+
+    // テーブルセルの移動処理
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let element = itemsList[sourceIndexPath.section][sourceIndexPath.row]
+        itemsList[sourceIndexPath.section].remove(at: sourceIndexPath.row)
+        itemsList[sourceIndexPath.section].insert(element, at: destinationIndexPath.row)
+    }
 
     // セルを削除する関数
     func removeCell(myCell: UITableViewCell) {
