@@ -239,10 +239,25 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
       return true
     }
 
-    // テーブルセルの移動処理
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let element = itemsList[sourceIndexPath.section][sourceIndexPath.row]
-        itemsList[sourceIndexPath.section].remove(at: sourceIndexPath.row)
+        let fruitData = realm.objects(Fruit.self)
+        let sourceObject = fruitData[sourceIndexPath.row]
+        // 削除前に必要なデータをコピー
+        let sourceName = sourceObject.name
+        
+        try! realm.write {
+            // 元のオブジェクトを削除
+            realm.delete([sourceObject])
+            
+            // 新しいオブジェクトを挿入
+            let newObject = Fruit()
+            newObject.id = UUID().uuidString // 新しいIDを生成
+            newObject.name = sourceName      // 削除前にコピーしたデータを使用
+            realm.add(newObject)
+        }
+        
+        // itemsListの更新
+        let element = itemsList[sourceIndexPath.section].remove(at: sourceIndexPath.row)
         itemsList[sourceIndexPath.section].insert(element, at: destinationIndexPath.row)
     }
 

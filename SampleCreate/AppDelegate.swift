@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -13,7 +14,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // Realmのマイグレーション設定
+        let config = Realm.Configuration(
+            schemaVersion: 3, // 新しいスキーマバージョン
+            migrationBlock: { migration, oldSchemaVersion in
+                if oldSchemaVersion < 3 {
+                    migration.enumerateObjects(ofType: Fruit.className()) { oldObject, newObject in
+                        // `id`を初期化（旧オブジェクトには存在しない場合）
+                        newObject?["id"] = UUID().uuidString
+                    }
+                }
+            }
+        )
+        
+        // Realmのデフォルト設定を更新
+        Realm.Configuration.defaultConfiguration = config
+        
+        // Realmインスタンスの初期化
+        _ = try! Realm()
+        
         return true
     }
 
