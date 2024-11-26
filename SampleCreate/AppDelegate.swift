@@ -16,12 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Realmのマイグレーション設定
         let config = Realm.Configuration(
-            schemaVersion: 3, // 新しいスキーマバージョン
+            schemaVersion: 5, // 新しいスキーマバージョン
             migrationBlock: { migration, oldSchemaVersion in
-                if oldSchemaVersion < 3 {
+                if oldSchemaVersion < 5 {
                     migration.enumerateObjects(ofType: Fruit.className()) { oldObject, newObject in
                         // `id`を初期化（旧オブジェクトには存在しない場合）
                         newObject?["id"] = UUID().uuidString
+                        newObject?["order"] = -1
                     }
                 }
             }

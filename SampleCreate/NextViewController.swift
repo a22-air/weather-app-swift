@@ -41,7 +41,8 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         // ひらがな入力ができないバグがあったのでキーボードタイプをデフォルトで指定
         textBox.keyboardType = .default
         
-        let fruitData = realm.objects(Fruit.self) // フルーツのデータ
+        // フルーツのデータをソート
+        let fruitData = realm.objects(Fruit.self).sorted(byKeyPath: "order", ascending: true)
         let prefecture = realm.objects(Prefectures.self) // 都道府県のデータ
         
         for i in 0 ..< itemsList.count {
@@ -239,25 +240,30 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
       return true
     }
 
+    // テーブルセルの移動処理
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let fruitData = realm.objects(Fruit.self)
-        let sourceObject = fruitData[sourceIndexPath.row]
-        // 削除前に必要なデータをコピー
-        let sourceName = sourceObject.name
+        // ソートしたフルーツのデータ
+        let fruitData = realm.objects(Fruit.self).sorted(byKeyPath: "order", ascending: true)
+        // fruitDataをListに格納
+        var fruitList = Array(fruitData)
+        
+        // 移動元のデータを削除した配列
+        let movedFruit = fruitList.remove(at: sourceIndexPath.row)
+        // fruitListの移動先rowにmovedFruitを格納
+        fruitList.insert(movedFruit, at:destinationIndexPath.row)
         
         try! realm.write {
-            // 元のオブジェクトを削除
-            realm.delete([sourceObject])
-            
-            // 新しいオブジェクトを挿入
-            let newObject = Fruit()
-            newObject.id = UUID().uuidString // 新しいIDを生成
-            newObject.name = sourceName      // 削除前にコピーしたデータを使用
-            realm.add(newObject)
+            for(index, fruit) in fruitList.enumerated() {
+                fruit.order = index
+            }
         }
         
         // itemsListの更新
-        let element = itemsList[sourceIndexPath.section].remove(at: sourceIndexPath.row)
+        // 移動元のデータ
+        let element = itemsList[sourceIndexPath.section][sourceIndexPath.row]
+        // 移動元のデータを削除
+        itemsList[sourceIndexPath.section].remove(at: sourceIndexPath.row)
+        // itemsListの移動先に移動元のデータを格納
         itemsList[sourceIndexPath.section].insert(element, at: destinationIndexPath.row)
     }
 
