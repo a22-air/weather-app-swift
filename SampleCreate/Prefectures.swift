@@ -9,5 +9,7 @@ import Foundation
 import RealmSwift
 
 class Prefectures: Object {
-    @objc dynamic var place = ""
+    @Persisted(primaryKey: true) var id: String = UUID().uuidString
+    @Persisted dynamic var place = ""
+    @Persisted dynamic var order = -1
 }

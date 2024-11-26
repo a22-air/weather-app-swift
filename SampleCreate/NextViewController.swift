@@ -43,7 +43,8 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         // フルーツのデータをソート
         let fruitData = realm.objects(Fruit.self).sorted(byKeyPath: "order", ascending: true)
-        let prefecture = realm.objects(Prefectures.self) // 都道府県のデータ
+        // 都道府県のデータをソート
+        let prefecture = realm.objects(Prefectures.self).sorted(byKeyPath: "order", ascending: true)
         
         for i in 0 ..< itemsList.count {
             let count = (i == 0) ? fruitData.count : prefecture.count
@@ -244,20 +245,34 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         // ソートしたフルーツのデータ
         let fruitData = realm.objects(Fruit.self).sorted(byKeyPath: "order", ascending: true)
+        // ソートした都道府県のデータ
+        let prefectureData = realm.objects(Prefectures.self).sorted(byKeyPath: "order", ascending: true)
         // fruitDataをListに格納
         var fruitList = Array(fruitData)
+        // prefectureDataをListに格納
+        var prefecturesList = Array(prefectureData)
         
-        // 移動元のデータを削除した配列
-        let movedFruit = fruitList.remove(at: sourceIndexPath.row)
-        // fruitListの移動先rowにmovedFruitを格納
-        fruitList.insert(movedFruit, at:destinationIndexPath.row)
-        
-        try! realm.write {
-            for(index, fruit) in fruitList.enumerated() {
-                fruit.order = index
+        if sourceIndexPath.section == 0 {
+            // 移動元のデータを削除した配列
+            let movedData = fruitList.remove(at: sourceIndexPath.row)
+            // fruitListの移動先rowにmovedFruitを格納
+            fruitList.insert(movedData, at:destinationIndexPath.row)
+            try! realm.write {
+                for(index, fruit) in fruitList.enumerated() {
+                    fruit.order = index
+                }
+            }
+        } else {
+            // 移動元のデータを削除した配列
+            let movedData = prefecturesList.remove(at: sourceIndexPath.row)
+            // prefecturesListの移動先rowにmovedFruitを格納
+            prefecturesList.insert(movedData, at: destinationIndexPath.row)
+            try! realm.write {
+                for(index, prefecture) in prefecturesList.enumerated() {
+                    prefecture.order = index
+                }
             }
         }
-        
         // itemsListの更新
         // 移動元のデータ
         let element = itemsList[sourceIndexPath.section][sourceIndexPath.row]
