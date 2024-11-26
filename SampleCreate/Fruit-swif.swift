@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class Fruit: Object {
+class Fruit: Object & Orderable {
     @Persisted(primaryKey: true) var id: String = UUID().uuidString
     @Persisted var name: String = ""
     @Persisted var order: Int = -1

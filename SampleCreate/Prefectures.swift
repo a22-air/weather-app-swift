@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class Prefectures: Object {
+class Prefectures: Object & Orderable {
     @Persisted(primaryKey: true) var id: String = UUID().uuidString
     @Persisted dynamic var place = ""
     @Persisted dynamic var order = -1

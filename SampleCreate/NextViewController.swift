@@ -8,6 +8,11 @@
 import UIKit
 import RealmSwift
 
+// Orderable プロトコルを定義(セルの並び替え処理で使用)
+protocol Orderable {
+    var order: Int { get set }
+}
+
 class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,Section1RemoveCell,UIPickerViewDelegate,UIPickerViewDataSource,Section2RemoveCell,LongCharactersRemoveCell {
     
     enum useColorTypes:String, CaseIterable {
@@ -247,32 +252,13 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let fruitData = realm.objects(Fruit.self).sorted(byKeyPath: "order", ascending: true)
         // ソートした都道府県のデータ
         let prefectureData = realm.objects(Prefectures.self).sorted(byKeyPath: "order", ascending: true)
-        // fruitDataをListに格納
-        var fruitList = Array(fruitData)
-        // prefectureDataをListに格納
-        var prefecturesList = Array(prefectureData)
         
-        if sourceIndexPath.section == 0 {
-            // 移動元のデータを削除した配列
-            let movedData = fruitList.remove(at: sourceIndexPath.row)
-            // fruitListの移動先rowにmovedFruitを格納
-            fruitList.insert(movedData, at:destinationIndexPath.row)
-            try! realm.write {
-                for(index, fruit) in fruitList.enumerated() {
-                    fruit.order = index
-                }
-            }
-        } else {
-            // 移動元のデータを削除した配列
-            let movedData = prefecturesList.remove(at: sourceIndexPath.row)
-            // prefecturesListの移動先rowにmovedFruitを格納
-            prefecturesList.insert(movedData, at: destinationIndexPath.row)
-            try! realm.write {
-                for(index, prefecture) in prefecturesList.enumerated() {
-                    prefecture.order = index
-                }
-            }
+        if sourceIndexPath.section == 0 { // セクション1の処理
+            sortedTableCell(fruitData, sourceIndexPath: sourceIndexPath, destinationIndexPath: destinationIndexPath)
+        } else { // セクション2の処理
+            sortedTableCell(prefectureData, sourceIndexPath: sourceIndexPath, destinationIndexPath: destinationIndexPath)
         }
+
         // itemsListの更新
         // 移動元のデータ
         let element = itemsList[sourceIndexPath.section][sourceIndexPath.row]
@@ -281,7 +267,28 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         // itemsListの移動先に移動元のデータを格納
         itemsList[sourceIndexPath.section].insert(element, at: destinationIndexPath.row)
     }
-
+    
+    // 並び変えの処理の関数
+    func sortedTableCell<T: Object & Orderable>(_ realmData: Results<T>, sourceIndexPath:IndexPath, destinationIndexPath: IndexPath) {
+        // Array型に変換
+        var realmDataArrya = Array(realmData)
+        
+        // 移動元のデータを削除した配列
+        let movedData = realmDataArrya.remove(at: sourceIndexPath.row)
+        // Listの移動先rowにmovedDataを格納
+        realmDataArrya.insert(movedData, at:destinationIndexPath.row)
+        
+        // List型に変換
+        let realmDataList = List<T>()
+        realmDataList.append(objectsIn: realmDataArrya)
+        
+        try! realm.write {
+            for(index,var realmItem) in realmDataList.enumerated() {
+                realmItem.order = index
+            }
+        }
+    }
+    
     // セルを削除する関数
     func removeCell(myCell: UITableViewCell) {
         guard let indexPath = myTableView.indexPath(for: myCell) else {
