@@ -59,7 +59,6 @@ class NextViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                 } else {
                     itemsList[i].append(prefecture[j].place)
                 }
-                print("itemList:",itemsList)
             }
         }
         // 使用するカスタムセルの登録
