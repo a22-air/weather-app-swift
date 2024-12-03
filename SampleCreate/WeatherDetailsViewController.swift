@@ -40,7 +40,7 @@ class WeatherDetailsViewController: UIViewController {
     @IBOutlet weak var weatherImage: UIImageView! // 今日の天気の画像を表示
     @IBOutlet weak var prefecturesLabel: UILabel! // 選択時の都道府県
     @IBOutlet weak var weatherLabel: UILabel! // 今日の天気をテキストで表示
-    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView! // インジゲーター
     // APIの天気コードから天気のアイコンを取得
     func setWeatherIcon(weatherKey: Int) {
         for weatherDatas in weatherDataArray {
@@ -92,7 +92,15 @@ class WeatherDetailsViewController: UIViewController {
 
         // Do any additional setup after loading the view.//
         
-        
+        // インジゲータの設定
+        if let activityIndicator = activityIndicator {
+            activityIndicator.center = view.center
+            view.addSubview(activityIndicator)
+            self.activityIndicator.startAnimating()
+        } else {
+            print("activityIndicator is nil")
+        }
+
         // 押下されたテーブルビューのインデックス番号を使い都道府県のkeyを代入
         selectLocation = receveItemsList[receveIndexPath[0]][receveIndexPath[1]] // 例："兵庫"を代入
         
@@ -167,6 +175,7 @@ class WeatherDetailsViewController: UIViewController {
                         print("maxTemperature:",self.maxTemperature) // 後で削除
                         print("minTemperature:",self.minTemperature) // 後で削除
                         print("weather",self.weather) // 後で削除
+                        stopIndicator() // インジゲーター非表示
                     }
                 }
             } catch {
@@ -184,7 +193,11 @@ class WeatherDetailsViewController: UIViewController {
         guard let data = try? Data(contentsOf: url) else {
             fatalError("ファイル読み込みエラー")
         }
-         
+        // インジゲーターを非表示にする関数
+        func stopIndicator() {
+            activityIndicator.stopAnimating()
+            activityIndicator.isHidden = true
+        }
         // JSONデコード処理
         let decoder = JSONDecoder()
         do {
@@ -194,7 +207,6 @@ class WeatherDetailsViewController: UIViewController {
         } catch {
             print("JSONデコードエラー: \(error)")
         }
-        
         // タスクの実行
         task.resume()
         
