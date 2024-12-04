@@ -463,6 +463,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Oob-GW-Atc">
+                                <rect key="frame" x="150" y="303" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="65l-bk-MTj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -491,6 +495,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="7ef-g3-0m2"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="Oob-GW-Atc" id="i5q-NY-TlL"/>
                         <outlet property="maxTemperatureLabel" destination="0jv-OF-OPu" id="BER-qq-D1j"/>
                         <outlet property="minTemperatureLabel" destination="0eh-fI-oYw" id="Oxc-ec-IHc"/>
                         <outlet property="prefecturesLabel" destination="6cW-no-2Dj" id="crX-6v-6km"/>
