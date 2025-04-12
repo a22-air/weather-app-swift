@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23077.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="L0W-Dp-KqC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="L0W-Dp-KqC">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23068.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -34,7 +35,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="画面Bに切り替え"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="aCq-bo-bdc"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="aCq-bo-bdc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1HU-9f-RX9">
@@ -57,7 +58,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="画面Eに切り替え"/>
                                 <connections>
-                                    <segue destination="vl5-9a-Rjg" kind="show" id="MbX-Ra-Zx1"/>
+                                    <segue destination="vl5-9a-Rjg" kind="presentation" animates="NO" modalPresentationStyle="automatic" id="MbX-Ra-Zx1"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -106,21 +107,51 @@
                                     <constraint firstAttribute="height" constant="200" id="4T5-gG-q0S"/>
                                 </constraints>
                             </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Vz9-vD-z5f">
+                                <rect key="frame" x="20" y="275" width="280" height="273"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8tH-fO-VvX">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="lFC-kZ-4d7">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="PSh-hJ-RUZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                        <color key="backgroundColor" systemColor="tableCellBlueTextColor"/>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="vl5-9a-Rjg" id="pWM-Wr-Jyl"/>
+                                    <outlet property="delegate" destination="vl5-9a-Rjg" id="tNQ-0s-n1R"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="G5y-oY-hV9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Vz9-vD-z5f" firstAttribute="top" secondItem="pZb-H0-mN7" secondAttribute="bottom" id="BKO-xl-ytT"/>
                             <constraint firstItem="dVd-Qz-BtF" firstAttribute="top" secondItem="G5y-oY-hV9" secondAttribute="top" constant="20" id="Umb-eu-y14"/>
                             <constraint firstItem="pZb-H0-mN7" firstAttribute="leading" secondItem="G5y-oY-hV9" secondAttribute="leading" constant="10" id="X6V-e6-nbL"/>
                             <constraint firstItem="dVd-Qz-BtF" firstAttribute="leading" secondItem="G5y-oY-hV9" secondAttribute="leading" constant="269" id="aIZ-vh-8ES"/>
+                            <constraint firstItem="Vz9-vD-z5f" firstAttribute="leading" secondItem="G5y-oY-hV9" secondAttribute="leading" constant="20" id="bVW-7w-87A"/>
                             <constraint firstItem="G5y-oY-hV9" firstAttribute="trailing" secondItem="dVd-Qz-BtF" secondAttribute="trailing" id="fHq-6b-N5O"/>
                             <constraint firstItem="pZb-H0-mN7" firstAttribute="top" secondItem="dVd-Qz-BtF" secondAttribute="bottom" constant="20" id="psT-NJ-a5x"/>
                             <constraint firstItem="G5y-oY-hV9" firstAttribute="trailing" secondItem="pZb-H0-mN7" secondAttribute="trailing" constant="10" id="sUz-VV-Vx1"/>
+                            <constraint firstItem="G5y-oY-hV9" firstAttribute="trailing" secondItem="Vz9-vD-z5f" secondAttribute="trailing" constant="20" id="w0K-5V-MCZ"/>
+                            <constraint firstItem="G5y-oY-hV9" firstAttribute="bottom" secondItem="Vz9-vD-z5f" secondAttribute="bottom" id="zyC-C7-fsn"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Klg-Ea-uS3"/>
                     <connections>
                         <outlet property="img" destination="pZb-H0-mN7" id="hWp-lj-AT3"/>
+                        <outlet property="imgs" destination="Vz9-vD-z5f" id="sVe-95-EDL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hD1-H4-vxV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -266,7 +297,7 @@
                                 <rect key="frame" x="0.0" y="210" width="320" height="312"/>
                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                                 <pickerView key="tableFooterView" contentMode="scaleToFill" id="3cf-Lq-Lud">
-                                    <rect key="frame" x="0.0" y="121.5" width="320" height="178"/>
+                                    <rect key="frame" x="0.0" y="122" width="320" height="178"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 </pickerView>
                                 <prototypes>

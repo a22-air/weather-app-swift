@@ -8,15 +8,26 @@
 import UIKit
 import PhotosUI
 
-class PickerViewController: UIViewController, PHPickerViewControllerDelegate {
+class PickerViewController: UIViewController, PHPickerViewControllerDelegate,UICollectionViewDelegate,UICollectionViewDataSource {
+    
+    
     
     @IBOutlet weak var img: UIImageView!
-    
+    @IBOutlet weak var imgs: UICollectionView!
+    var images: [UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        
+        // 使用するカスタムセルの登録
+        imgs.register(UINib(nibName: "imgsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCell")
+        // collection view のレイアウト設定
+            let layout = UICollectionViewFlowLayout()
+            layout.itemSize = CGSize(width: 110, height: 110)
+//            layout.minimumInteritemSpacing = 20
+            imgs.collectionViewLayout = layout
     }
     
     // ボタン押下時にピッカーを表示する処理
@@ -25,7 +36,7 @@ class PickerViewController: UIViewController, PHPickerViewControllerDelegate {
         // 取得するタイプの指定(写真)
         configuration.filter = .images
         // 選択可能枚数の指定(0は無制限)
-        configuration.selectionLimit = 1
+        configuration.selectionLimit = 0
         // PHPickerViewControllerを初期化して設定を反映させる
         let picker = PHPickerViewController(configuration: configuration)
         picker.delegate = self
@@ -46,7 +57,9 @@ class PickerViewController: UIViewController, PHPickerViewControllerDelegate {
         // 正常系のクロージャー
         let successHandler: (UIImage) -> Void = { [weak self] image in
             DispatchQueue.main.async {
-                self?.img.image = image
+//                self?.img.image = image
+                self?.images.append(image)
+                self?.imgs.reloadData()
             }
         }
         
@@ -69,7 +82,17 @@ class PickerViewController: UIViewController, PHPickerViewControllerDelegate {
             }
         }
     }
-
+    // セクションの中のセルの数を返す
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return  images.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        //storyboard上のセルを生成　storyboardのIdentifierで付けたものをここで設定する
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCell", for: indexPath) as! imgsCollectionViewCell
+        cell.imgView.image = images[indexPath.row]
+            return cell
+    }
     /*
     // MARK: - Navigation
 

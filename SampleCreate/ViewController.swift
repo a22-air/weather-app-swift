@@ -18,6 +18,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         num1.placeholder = "数字を入力してください"
         num2.placeholder = "数字を入力してください"
+        
     }
 
 
