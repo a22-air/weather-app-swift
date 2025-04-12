@@ -11,6 +11,7 @@ Swiftで作成したシンプルな天気アプリです。現在地の天気を
 - Swift
 - Storyboard（AutoLayout使用）
 - OpenWeatherMap API
+- RealmSwift
 
 ## 苦労した点
 - カスタムセルの作成とデリゲートパターンの理解に苦労しました
