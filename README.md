@@ -9,7 +9,7 @@ Swiftで作成したシンプルな天気アプリです。現在地の天気を
 
 ## 技術スタック
 - Swift
-- - Storyboard（AutoLayout使用）
+- Storyboard（AutoLayout使用）
 - OpenWeatherMap API
 
 ## 苦労した点
